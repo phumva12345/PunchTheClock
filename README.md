@@ -2,10 +2,9 @@
 
 Developing by Second Year B.Eng. in Software Engineering, King Mongkut's Institute of Technology Ladkrabang.
 
-Base on : Python3 and Django
+Base on : Python3 and [Django](https://www.djangoproject.com/)
 
-program requirement : Face_recognition
-
+program requirement : [Face_recognition](https://github.com/ageitgey/face_recognition)
 # Features
 
 ## Employees Data Management
