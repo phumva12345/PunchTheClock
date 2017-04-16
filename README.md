@@ -9,7 +9,7 @@ program requirement : [Face_recognition](https://github.com/ageitgey/face_recogn
 
 ## Employees Data Management
 
-Store and Categorize employees or member data and easy to find or edit by using DJANGO
+Store and Categorize employees or member data and easy to find or edit by using [Django](https://www.djangoproject.com/)
 
 ## Scaning Face For Punch The Clock
 
