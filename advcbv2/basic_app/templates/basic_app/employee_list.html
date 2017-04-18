@@ -1,0 +1,46 @@
+{% extends "basic_app/basic_app_base.html" %}
+{% block body_block %}
+  <div class="jumbotron">
+
+    <h1>Welcome to the List of Employee</h1>
+    <table>
+      <thead>
+        <th><div class="name">Name</th></div>
+        <th><div class="position">
+        Position</th></div>
+        <th><div class="position">
+        Education</th></div>
+      </thead>
+
+        {% for school in employee_list %}
+      <tr>
+        <td><a href="{{school.id}}/">{{school.name}} </a></td>
+        <td>{{school.position}}</td>
+        <td>{{school.education}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    {% if is_paginated %}
+        <div class="pagination">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+                <span class="page-current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">next</a>
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}
+
+
+
+  </div>
+
+
+
+
+{% endblock %}

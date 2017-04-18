@@ -1,0 +1,61 @@
+h1{
+  color: red;
+}
+th {
+  padding-right: 35px;
+}
+.name{
+  font-size: 28px;
+}
+.position{
+  font-size: 28px;
+}
+
+.bgall{
+  background-color: #1b1c1d;
+
+}
+
+.hell{
+  font-size: 500px;
+}
+
+body {
+  background-color: #1b1c1d;
+}
+
+.homemenu {
+  color: #fff !important;
+  font-weight:400 !important;
+}
+
+.navbar-default{
+  border-color: #1b1c1d;
+  color: red;
+}
+.navbar{
+  margin-top:23px;
+}
+.introhome{
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+  text-align: center;
+  font-size: 4em;
+  color: #fff;
+  font-weight: normal;
+}
+
+.introhome2 {
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+  text-align: center;
+  font-size: 1.7em;
+  color: #fff;
+  font-weight: normal;
+}
+
+.butcen{
+  text-align: center;
+  padding-top: 50px;
+}
+.butsize{
+  font-size: 50px;
+}
