@@ -11,6 +11,6 @@ program requirement : [Face_recognition](https://github.com/ageitgey/face_recogn
 
 Store and Categorize employees or member data and easy to find or edit by using [Django](https://www.djangoproject.com/)
 
-## Scaning Face For Punch The Clock
+## Password and Capture Face For Punch The Clock
 
 Checking who come to work in time or late and storing data to database by using [Face_recognition](https://github.com/ageitgey/face_recognition)
