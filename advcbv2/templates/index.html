@@ -5,7 +5,7 @@
 
 
 
-      <h2>Here is your injected content: {{ injectme }}</h2>
+      <!-- <h2>Here is your injected content: {{ injectme }}</h2> -->
       <div class="jumbotron bgall">
         <div class="introhome">
           Punch-the-Clock
@@ -14,11 +14,11 @@
           Do whatever you want when you want to
         </div>
 
-        <form class ="butcen butsize"method="POST" action="{% url 'basic_app:login' %}">
+        <form class ="butcen"method="POST" action="{% url 'basic_app:login' %}">
         {% csrf_token %}
             {{form.as_p}}
             {{form.username}}
-            <input type="submit" class='btn btn-primary' value="Get Started" />
+            <input type="submit" class='btn btn-primary butsize' value="Get Started" />
             <input type="hidden" name="next" value="{{ next }}" />
         </form>
       </div>

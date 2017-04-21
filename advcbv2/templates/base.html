@@ -15,6 +15,7 @@
     {# https://bootswatch.com/#}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href= "{% static "css/mystyle.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato" />
 </head>
   <body>
     <nav class="navbar navbar-default navbar-static-top bgall">
@@ -22,21 +23,26 @@
 
 
         <ul class="nav navbar-nav">
-          <li><a class="navbar-brand homemenu" href="{% url 'basic_app:list' %}">Schools</a></li>
-          <li><a class="navbar-link homemenu" href="{% url 'admin:index' %}">Admin</a></li>
-          <li><a class="navbar-link homemenu" href="#"></a></li>
+          <li><a class="navbar-brand homemenu" href="{% url 'basic_app:list' %}">Home</a></li>
+          <li><a class="navbar-link homemenu2" href="{% url 'admin:index' %}">Admin</a></li>
+          <li><a class="navbar-link homemenu2" href="#">About us</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
           {% if user.is_authenticated %}
           <li>
-            <a href="{% url 'basic_app:logout' %}" >Log out</a>
+            <a class ="userlog"> {{ user.username }}</a>
+          </li>
+          <li>
+            <a  class = "loginborder" href="{% url 'basic_app:logout' %}" >Log out</a>
           </li>
 
-          <li>
-            <a >Welcome: {{ user.username }}</a>
-          </li>
+
             {% else %}
-            <li><a class='nav navbar-right' href="{% url 'basic_app:login' %}" ><span class="glyphicon glyphicon-user"></span></a></li>
+            <li><a class ="loginborder" href="{% url 'basic_app:login' %}" >Log In </a></li>
+            <li><a href="{% url 'basic_app:login' %}" ><span class="glyphicon glyphicon-user"></span></a></li>
           {% endif %}
         </ul>
+
       </div>
     </nav>
 

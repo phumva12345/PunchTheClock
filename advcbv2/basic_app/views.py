@@ -38,30 +38,32 @@ class EmployeeListView(ListView):
 
     # Example of making your own:
     # context_object_name = 'schools'
-    
-    model = models.Employee
-    paginate_by = 1
 
-class EmployeeSearchListView(EmployeeListView):
+    model = models.Employee
+    paginate_by = 10
+
+class EmployeeSearchListView(ListView):
     """
     Display a Blog List page filtered by the search query.
     """
-    paginate_by = 10
+    context_object_name = 'searchde'
+
+    template_name = 'basic_app/search_employee.html'
+    model = models.Employee
 
     def get_queryset(self):
-        result = super(BlogSearchListView, self).get_queryset()
+        try:
+            print(self.kwargs)
+            print(self.request.GET)
+            q = self.request.GET['q']
 
-        query = self.request.GET.get('q')
-        if query:
-            query_list = query.split()
-            result = result.filter(
-                reduce(operator.and_,
-                       (Q(name__icontains=q) for q in query_list)) |
-                reduce(operator.and_,
-                       (Q(position__icontains=q) for q in query_list))
-            )
-
-        return result
+        except:
+            q = ''
+        if (q != ''):
+            object_list = self.model.objects.filter(name__iexact = q)
+        else:
+            object_list = self.model.objects.all()
+        return object_list
 
 class EmployeeDetailView(DetailView):
     context_object_name = 'employee_details'

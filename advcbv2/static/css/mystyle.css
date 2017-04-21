@@ -2,7 +2,7 @@ h1{
   color: red;
 }
 th {
-  padding-right: 35px;
+  padding-right: 40px;
 }
 .name{
   font-size: 28px;
@@ -27,6 +27,17 @@ body {
 .homemenu {
   color: #fff !important;
   font-weight:400 !important;
+  font-size: 1.3em;
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+  border-bottom: 2px solid #fff;
+}
+
+.homemenu2 {
+  color: rgba(255,255,255,.7) !important;
+  font-weight:400 !important;
+  font-size: 1.3em;
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+
 }
 
 .navbar-default{
@@ -34,14 +45,15 @@ body {
   color: red;
 }
 .navbar{
-  margin-top:23px;
+  margin-top:25px;
 }
 .introhome{
   font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
   text-align: center;
-  font-size: 4em;
+  font-size: 4.8em;
   color: #fff;
   font-weight: normal;
+  padding-top: 50px;
 }
 
 .introhome2 {
@@ -54,8 +66,29 @@ body {
 
 .butcen{
   text-align: center;
-  padding-top: 50px;
+  padding-top: 30px;
+
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
 }
 .butsize{
-  font-size: 50px;
+  font-size: 20px;
+}
+
+
+.loginborder{
+  color: #fff !important;
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+  font-size: 1.4em;
+  border: 2px solid #fff;
+  border-radius: .28571429rem;
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+  margin-top: 6px;
+}
+
+.userlog{
+  color: #fff !important;
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+  font-size: 1.3em;
+  margin-top: 3px;
 }
