@@ -4,19 +4,23 @@
 
     <h1>Welcome to the List of Employee</h1>
     <table>
-      <thead>
+      <!-- <thead>
+        <th><div class=""></div></th>
         <th><div class="name">Name</th></div>
         <th><div class="position">
         Position</th></div>
         <th><div class="position">
         Education</th></div>
-      </thead>
-
+      </thead> -->
+        {% load static %}
         {% for school in employee_list %}
       <tr>
+        <td><img class= "img-circle" src="{% static school.profile_picture %}" alt="Oh, didn't show!" height="50" width="50"></td>
         <td><a href="{{school.id}}/">{{school.name}} </a></td>
         <td>{{school.position}}</td>
         <td>{{school.education}}</td>
+
+
       </tr>
       {% endfor %}
     </table>

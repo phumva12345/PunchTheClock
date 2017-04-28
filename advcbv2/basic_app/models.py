@@ -10,7 +10,11 @@ class Employee(models.Model):
     name = models.CharField(max_length=256)
     position = models.CharField(max_length=256)
     education = models.CharField(max_length=256)
+    email = models.EmailField(max_length=70,blank=True)
+    telephone = models.CharField(max_length=256)
     profile_picture = models.ImageField(upload_to='profile_pics')
+
+
 
 
     def __str__(self):
