@@ -8,7 +8,7 @@
     <p>Position: {{employee_details.position}}</p>
     <p>Education: {{employee_details.education}}</p>
     {% load static %}
-    <p>profile: <img src="{% static employee_details.profile_picture %}" alt="Oh, didn't show!"></p>
+    <p>profile: <img src="{% static employee_details.profile_picture %}" alt="Oh, didn't show!" height="42" width="42"></p>
     <h3>Students:</h3>
 
       {% for student in employee_details.attendance.all %}

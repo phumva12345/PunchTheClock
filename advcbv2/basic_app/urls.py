@@ -12,5 +12,6 @@ urlpatterns = [
     url(r'^delete/(?P<pk>\d+)/$',views.EmployeeDeleteView.as_view(),name='delete'),
     url(r'^accounts/login/$', vviews.login, name='login'),
     url(r'^accounts/logout/$', vviews.logout, name='logout', kwargs={'next_page': '/'}),
+    url(r'^search/$',views.EmployeeSearchListView.as_view(),name='search_detail'),
 
 ]

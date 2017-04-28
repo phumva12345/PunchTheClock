@@ -27,7 +27,7 @@
           <li><a class="navbar-brand" href="{% url 'basic_app:list' %}">Employee</a></li>
           <li><a class="navbar-link" href="{% url 'admin:index' %}">Admin</a></li>
           <li><a class="navbar-link" href="{% url 'basic_app:create' %}">Create Employee</a></li>
-            <form method="get" action="/results/" class="navbar-form pull-right">
+            <form method="GET" action="{% url 'basic_app:search_detail' %}" class="navbar-form pull-right">
             <input type="text" id="searchBox" class="input-medium search-query" name="q" placeholder="Search">
             <input type="submit" class="btn" value="Search" >
             </form>
