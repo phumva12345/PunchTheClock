@@ -1,14 +1,22 @@
 {% extends "basic_app/basic_app_base.html" %}
 {% block body_block %}
   <div class="jumbotron">
-    <h1>Welcome to the Employee Detail Page</h1>
-    <h2>Employee Details:</h2>
-    <p>Id_num: {{employee_details.id}}</p>
-    <p>Name: {{employee_details.name}}</p>
-    <p>Position: {{employee_details.position}}</p>
-    <p>Education: {{employee_details.education}}</p>
-    {% load static %}
-    <p>profile: <img src="{% static employee_details.profile_picture %}" alt="Oh, didn't show!" height="42" width="42"></p>
+    <div class="row">
+      <div class="col-md-5 textaligncen">
+        {% load static %}
+        <p> <img class= "img-circles" src="{% static employee_details.profile_picture %}" alt="Oh, didn't show!" height="275" width="275"></p>
+        <p class="namedetail">{{employee_details.name}}</p>
+        <p class="positiondetail">{{employee_details.position}}</p>
+
+        <p class="educationdetail"><span class="glyphicon glyphicon-education"></span>{{employee_details.education}}</p>
+      </div>
+      <div class="col-md-7 borderbtw">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </div>
+
+
+    </div>
+
     <h3>Students:</h3>
 
       {% for student in employee_details.attendance.all %}

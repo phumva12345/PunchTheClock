@@ -43,9 +43,8 @@ class EmployeeListView(ListView):
     paginate_by = 10
 
 class EmployeeSearchListView(ListView):
-    """
-    Display a Blog List page filtered by the search query.
-    """
+
+
     context_object_name = 'searchde'
 
     template_name = 'basic_app/search_employee.html'
@@ -60,7 +59,7 @@ class EmployeeSearchListView(ListView):
         except:
             q = ''
         if (q != ''):
-            object_list = self.model.objects.filter(name__iexact = q)
+            object_list = self.model.objects.filter(name__icontains = q)
         else:
             object_list = self.model.objects.all()
         return object_list
@@ -72,14 +71,15 @@ class EmployeeDetailView(DetailView):
 
 
 class EmployeeCreateView(CreateView):
-    fields = ("name","position","education","profile_picture")
+    fields = ("name","position","education","email","telephone","profile_picture")
     model = models.Employee
-
+    template_name = 'basic_app/employee_form.html'
 
 
 class EmployeeUpdateView(UpdateView):
     fields = ("name","position")
     model = models.Employee
+    template_name = 'basic_app/employee_form.html'
 
 class EmployeeDeleteView(DeleteView):
     model = models.Employee
