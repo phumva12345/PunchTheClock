@@ -133,4 +133,29 @@ body {
 }
 .jumbotron p{
   margin-bottom: 3px;
+<<<<<<< Updated upstream
+=======
+}
+
+body#page2{
+  background-color:#fff;
+}
+
+
+.searchb{
+  padding-right: 400px !important;
+}
+
+
+.radio_item{
+display: none !important;
+}
+
+.label_item {
+opacity: 0.1;
+}
+
+.radio_item:checked + label {
+opacity: 1;
+>>>>>>> Stashed changes
 }

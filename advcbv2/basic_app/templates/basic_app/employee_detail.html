@@ -17,10 +17,17 @@
 
     </div>
 
+<<<<<<< Updated upstream
     <h3>Students:</h3>
 
       {% for student in employee_details.attendance.all %}
         <p>{{student.name}} who is {{student.age}} years old.</p>
+=======
+    <h3>Attendance:</h3>
+
+      {% for student in employee_details.employees.all %}
+        <p>{{student.time}} </p>
+>>>>>>> Stashed changes
       {% endfor %}
 
   </div>
