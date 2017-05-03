@@ -43,10 +43,17 @@ class EmployeeListView(ListView):
     paginate_by = 10
 
 class EmployeeSearchListView(ListView):
+<<<<<<< Updated upstream
 
 
     context_object_name = 'searchde'
 
+=======
+
+
+    context_object_name = 'searchde'
+
+>>>>>>> Stashed changes
     template_name = 'basic_app/search_employee.html'
     model = models.Employee
 
@@ -55,12 +62,32 @@ class EmployeeSearchListView(ListView):
             print(self.kwargs)
             print(self.request.GET)
             q = self.request.GET['q']
+<<<<<<< Updated upstream
 
         except:
             q = ''
         if (q != ''):
             object_list = self.model.objects.filter(name__icontains = q)
         else:
+=======
+            p = self.request.GET['posit']
+            print(p)
+
+        except:
+            q = ''
+        if (q != '' and p == 'na'):
+            print("hello")
+            object_list = self.model.objects.filter(name__icontains = q)
+            print(object_list)
+        elif (q != '' and p == 'idd'):
+            print("test2")
+            object_list = self.model.objects.filter(id__icontains = q)
+        elif (q != '' and p == 'depart'):
+            print("Fuck you")
+            object_list = self.model.objects.filter(id__icontains = q)
+        else:
+            print("fuck")
+>>>>>>> Stashed changes
             object_list = self.model.objects.all()
         return object_list
 
@@ -71,7 +98,11 @@ class EmployeeDetailView(DetailView):
 
 
 class EmployeeCreateView(CreateView):
+<<<<<<< Updated upstream
     fields = ("name","position","education","email","telephone","profile_picture")
+=======
+    fields = ("name","position","education","email","telephone","depname","profile_picture")
+>>>>>>> Stashed changes
     model = models.Employee
     template_name = 'basic_app/employee_form.html'
 
@@ -85,6 +116,15 @@ class EmployeeDeleteView(DeleteView):
     model = models.Employee
     success_url = reverse_lazy("basic_app:list")
 
+class AttendanceCreateView(CreateView):
+    fields = ("employee","time")
+    model = models.Attendance
+    template_name = 'basic_app/employee_form.html'
+
+class DepartmentCreateView(CreateView):
+    fields =("dep")
+    model = models.Department
+    template_name = 'basic_app/employee_form.html'
 
 class CBView(View):
     def get(self,request):

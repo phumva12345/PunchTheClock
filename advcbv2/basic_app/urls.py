@@ -13,5 +13,9 @@ urlpatterns = [
     url(r'^accounts/login/$', vviews.login, name='login'),
     url(r'^accounts/logout/$', vviews.logout, name='logout', kwargs={'next_page': '/'}),
     url(r'^search/$',views.EmployeeSearchListView.as_view(),name='search_detail'),
+<<<<<<< Updated upstream
+=======
+    url(r'^creates/$',views.AttendanceCreateView.as_view(),name='createatt'),
+>>>>>>> Stashed changes
 
 ]

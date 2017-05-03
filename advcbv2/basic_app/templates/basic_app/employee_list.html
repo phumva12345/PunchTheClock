@@ -2,6 +2,7 @@
 {% block body_block %}
   <div class="jumbotron">
 
+<<<<<<< Updated upstream
     <h1>Welcome to the List of Employee</h1>
     <table>
       <!-- <thead>
@@ -37,6 +38,67 @@
                     <a href="?page={{ page_obj.next_page_number }}">next</a>
                 {% endif %}
             </span>
+=======
+    <div class="row">
+      <div class="col-md-12 ">
+        <form method="GET" action="{% url 'basic_app:search_detail' %}" class="navbar-form ">
+        <input type="text" id="" class="searchb" name="q" placeholder="Search">
+
+        <input type="radio" name="posit" value="depart" checked>Department
+        <input type="radio" name="posit" value="na">Name
+        <input type="radio" name="posit" value="idd">Id
+        <input type="radio" class="radio_item" value="" name="item" id="radio1">
+        <label class="label_item" for="radio1"> <span class="glyphicon glyphicon-user"></label>
+
+        <!--RADIO 2-->
+        <input type="radio" class="radio_item" value="" name="item" id="radio2">
+        <label class="label_item" for="radio2"> <span class="glyphicon glyphicon-user"></label>
+        <input type="submit" class="btn" value="Search" >
+
+
+        </form>
+      </div>
+
+
+    </div>
+    <div class="row">
+
+
+      <table>
+        <!-- <thead>
+          <th><div class=""></div></th>
+          <th><div class="name">Name</th></div>
+          <th><div class="position">
+          Position</th></div>
+          <th><div class="position">
+          Education</th></div>
+        </thead> -->
+          {% load static %}
+          {% for school in employee_list %}
+        <tr>
+          <td><img class= "img-circle" src="{% static school.profile_picture %}" alt="Oh, didn't show!" height="50" width="50"></td>
+          <td><a href="{{school.id}}/">{{school.name}} </a></td>
+          <td>{{school.position}}</td>
+          <td>{{school.education}}</td>
+
+        </tr>
+        {% endfor %}
+      </table>
+      {% if is_paginated %}
+          <div class="pagination">
+              <span class="page-links">
+                  {% if page_obj.has_previous %}
+                      <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                  {% endif %}
+                  <span class="page-current">
+                      Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                  </span>
+                  {% if page_obj.has_next %}
+                      <a href="?page={{ page_obj.next_page_number }}">next</a>
+                  {% endif %}
+              </span>
+          </div>
+>>>>>>> Stashed changes
         </div>
     {% endif %}
 

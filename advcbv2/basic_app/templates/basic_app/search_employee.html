@@ -1,8 +1,14 @@
 {% extends "basic_app/basic_app_base.html" %}
 {% block body_block %}
+<<<<<<< Updated upstream
   {% for school in searchde %}
 
   <a href="{% url 'basic_app:detail' pk=school.id %}">{{school.name}} </a>
+=======
+  {% for student in searchde %}
+
+  <a href="{% url 'basic_app:detail' pk=student.id %}">{{student.name}} </a>
+>>>>>>> Stashed changes
 
   {% endfor %}
 
