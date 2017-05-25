@@ -1,0 +1,73 @@
+{% extends "basic_app/basic_app_base.html" %}
+{% block body_block %}
+  <div class="jumbotron">
+
+    <div class="row">
+      <div class="col-md-12 ">
+        <form method="GET" action="{% url 'basic_app:search_detail' %}" class="navbar-form ">
+        <input type="text" id="" class="searchb" name="q" placeholder="Search">
+
+        <input type="radio" name="posit" value="depart">Department
+        <input type="radio" name="posit" value="na">Name
+        <input type="radio" name="posit" value="idd">Id
+        <input type="radio" class="radio_item" value="" name="item" id="radio1">
+        <label class="label_item tooltip" for="radio1"> <span class="glyphicon glyphicon-user "> <span class="tooltiptext">Name</span></span></label>
+
+        <!--RADIO 2-->
+        <input type="radio" class="radio_item" value="" name="item" id="radio2">
+        <label class="label_item tooltip" for="radio2"> <span class="glyphicon glyphicon-home "><span class="tooltiptext">Department</span></span></label>
+        <input type="submit" class="btn" value="Search" >
+
+
+        </form>
+      </div>
+
+
+    </div>
+    <div class="row">
+
+
+      <table>
+        <!-- <thead>
+          <th><div class=""></div></th>
+          <th><div class="name">Name</th></div>
+          <th><div class="position">
+          Position</th></div>
+          <th><div class="position">
+          Education</th></div>
+        </thead> -->
+          {% load static %}
+          {% for school in department_list %}
+        <tr>
+
+          <td><a href="{% url 'basic_app:ddetail' pk=1%}">{{school.dep}} </a></td>
+          <td>{{school.namedep}}</td>
+
+        </tr>
+        {% endfor %}
+      </table>
+      {% if is_paginated %}
+          <div class="pagination">
+              <span class="page-links">
+                  {% if page_obj.has_previous %}
+                      <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                  {% endif %}
+                  <span class="page-current">
+                      Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                  </span>
+                  {% if page_obj.has_next %}
+                      <a href="?page={{ page_obj.next_page_number }}">next</a>
+                  {% endif %}
+              </span>
+          </div>
+        </div>
+    {% endif %}
+
+
+
+  </div>
+
+
+
+
+{% endblock %}
