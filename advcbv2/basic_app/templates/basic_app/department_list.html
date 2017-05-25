@@ -37,12 +37,11 @@
           Education</th></div>
         </thead> -->
           {% load static %}
-          {% for school in employee_list %}
+          {% for school in department_list %}
         <tr>
-          <td><img class= "img-circle" src="{% static school.profile_picture %}" alt="Oh, didn't show!" height="50" width="50"></td>
-          <td><a href="{{school.id}}/">{{school.name}} </a></td>
-          <td>{{school.position}}</td>
-          <td>{{school.education}}</td>
+
+          <td><a href="{% url 'basic_app:ddetail' pk=1%}">{{school.dep}} </a></td>
+          <td>{{school.namedep}}</td>
 
         </tr>
         {% endfor %}

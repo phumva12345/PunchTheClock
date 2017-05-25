@@ -42,34 +42,28 @@ class EmployeeListView(ListView):
     model = models.Employee
     paginate_by = 10
 
+class DepartmentListView(ListView):
+
+    model = models.Department
+    paginate_by =10
+    template_name = 'basic_app/department_list.html'
 class EmployeeSearchListView(ListView):
-<<<<<<< Updated upstream
 
-
-    context_object_name = 'searchde'
-
-=======
 
 
     context_object_name = 'searchde'
 
->>>>>>> Stashed changes
+
+
     template_name = 'basic_app/search_employee.html'
     model = models.Employee
+    model2= models.Department
 
     def get_queryset(self):
         try:
             print(self.kwargs)
             print(self.request.GET)
             q = self.request.GET['q']
-<<<<<<< Updated upstream
-
-        except:
-            q = ''
-        if (q != ''):
-            object_list = self.model.objects.filter(name__icontains = q)
-        else:
-=======
             p = self.request.GET['posit']
             print(p)
 
@@ -83,11 +77,10 @@ class EmployeeSearchListView(ListView):
             print("test2")
             object_list = self.model.objects.filter(id__icontains = q)
         elif (q != '' and p == 'depart'):
-            print("Fuck you")
-            object_list = self.model.objects.filter(id__icontains = q)
+            print("test3")
+            object_list = self.model2.objects.filter(dep__icontains = q)
         else:
             print("fuck")
->>>>>>> Stashed changes
             object_list = self.model.objects.all()
         return object_list
 
@@ -96,13 +89,13 @@ class EmployeeDetailView(DetailView):
     model = models.Employee
     template_name = 'basic_app/employee_detail.html'
 
-
+class DepartmentDetailView(DetailView):
+    context_object_name = 'department_details'
+    model = models.Department
+    template_name = 'basic_app/department_detail.html'
 class EmployeeCreateView(CreateView):
-<<<<<<< Updated upstream
-    fields = ("name","position","education","email","telephone","profile_picture")
-=======
-    fields = ("name","position","education","email","telephone","depname","profile_picture")
->>>>>>> Stashed changes
+
+    fields = ("name","position","education","email","age","telephone","depname","profile_picture")
     model = models.Employee
     template_name = 'basic_app/employee_form.html'
 
@@ -122,7 +115,7 @@ class AttendanceCreateView(CreateView):
     template_name = 'basic_app/employee_form.html'
 
 class DepartmentCreateView(CreateView):
-    fields =("dep")
+    fields =("dep","namedep")
     model = models.Department
     template_name = 'basic_app/employee_form.html'
 

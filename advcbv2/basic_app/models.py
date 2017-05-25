@@ -1,38 +1,30 @@
 from django.db import models
 from django.core.urlresolvers import reverse
 from PIL import Image
-<<<<<<< Updated upstream
 
-
-=======
 from datetime import datetime
->>>>>>> Stashed changes
+
 
 
 # Create your models here.
 
 class Department(models.Model):
-    dep = models.CharField(default = 'depa',max_length=256)
+
+    dep = models.CharField(max_length=256)
+    namedep = models.CharField(max_length=256)
 
     def __str__(self):
         return self.dep
+    def get_absolute_url(self):
+        return reverse("basic_app:list")
 
 
 class Employee(models.Model):
 
-    positionarr = (('ceo','CEO'),('manager','Manager'))
+    positionarr = (('ceo','CEO'),('manager','Manager'),('worker','Worker'))
     name = models.CharField(max_length=256)
     position = models.CharField(max_length=256)
-<<<<<<< Updated upstream
-    education = models.CharField(max_length=256)
-    email = models.EmailField(max_length=70,blank=True)
-    telephone = models.CharField(max_length=256)
-    profile_picture = models.ImageField(upload_to='profile_pics')
-
-
-
-
-=======
+    age = models.CharField(max_length=256,null=True)
     education = models.CharField(max_length=256,choices = positionarr)
     email = models.EmailField(max_length=70,blank=True)
     telephone = models.CharField(max_length=256)
@@ -40,7 +32,6 @@ class Employee(models.Model):
     profile_picture = models.ImageField(upload_to='profile_pics')
 
 
->>>>>>> Stashed changes
     def __str__(self):
         return self.name
 
