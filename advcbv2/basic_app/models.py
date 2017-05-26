@@ -30,6 +30,7 @@ class Employee(models.Model):
     telephone = models.CharField(max_length=256)
     depname = models.ForeignKey(Department,null=True,related_name='depatments')
     profile_picture = models.ImageField(upload_to='profile_pics')
+    loginatten = models.CharField(max_length=256, unique= True)
 
 
     def __str__(self):

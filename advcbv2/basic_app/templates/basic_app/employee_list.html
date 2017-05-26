@@ -1,8 +1,13 @@
 {% extends "basic_app/basic_app_base.html" %}
 {% block body_block %}
-  <div class="jumbotron">
+  <div class="row boxshadowbot">
+    <div class="col-md-4">
+      <h2>Employee List</h2>
+    </div>
+  </div>
+  <!-- <div class="jumbotron bgjumbotron2"> -->
 
-    <div class="row">
+    <div class="row paddown10">
       <div class="col-md-12 ">
         <form method="GET" action="{% url 'basic_app:search_detail' %}" class="navbar-form ">
         <input type="text" id="" class="searchb" name="q" placeholder="Search">
@@ -24,10 +29,41 @@
 
 
     </div>
-    <div class="row">
+    {% load static %}
+    {% for school in employee_list %}
+    <div class="row borderbot">
+      <div class="col-md-1 minusmar">
+
+      </div>
+      <div class="col-md-4">
+        <div class="row pull-down">
+          <div class="col-md-3">
+
+              <img class= "profile_img" src="{% static school.profile_picture %}" alt="Oh, didn't show!" height="55" width="55">
+          </div>
+          <div class="col-md-9 padleftlst pull-down">
+            <div class="row">
+              <div class="col-md-12">
+                <a href="{{school.id}}/">{{school.name}} </a>
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <p class="textsch">{{school.email}} </p>
+              </div>
+
+            </div>
+          </div>
 
 
-      <table>
+
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+
+      <!-- <table> -->
         <!-- <thead>
           <th><div class=""></div></th>
           <th><div class="name">Name</th></div>
@@ -36,17 +72,22 @@
           <th><div class="position">
           Education</th></div>
         </thead> -->
-          {% load static %}
+          <!-- {% load static %}
           {% for school in employee_list %}
-        <tr>
-          <td><img class= "img-circle" src="{% static school.profile_picture %}" alt="Oh, didn't show!" height="50" width="50"></td>
-          <td><a href="{{school.id}}/">{{school.name}} </a></td>
-          <td>{{school.position}}</td>
-          <td>{{school.education}}</td>
+            <tr>
+              <td><img class= "profile_img" src="{% static school.profile_picture %}" alt="Oh, didn't show!" height="50" width="58"></td>
+              <td><a href="{{school.id}}/">{{school.name}} </a></td>
+            </tr>
+            <tr>
 
-        </tr>
+              <td>{{school.position}}</td>
+              <td>{{school.education}}</td>
+            </tr>
+
+
+
         {% endfor %}
-      </table>
+      </table> -->
       {% if is_paginated %}
           <div class="pagination">
               <span class="page-links">
@@ -61,12 +102,11 @@
                   {% endif %}
               </span>
           </div>
-        </div>
+        <!-- </div> -->
     {% endif %}
 
 
 
-  </div>
 
 
 
