@@ -40,7 +40,7 @@
           {% for school in department_list %}
         <tr>
 
-          <td><a href="{% url 'basic_app:ddetail' pk=1%}">{{school.dep}} </a></td>
+          <td><a href="{% url 'basic_app:ddetail' pk=school.id%}">{{school.dep}} </a></td>
           <td>{{school.namedep}}</td>
 
         </tr>

@@ -9,7 +9,8 @@ from . import models
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
 from django.core.paginator import Paginator
-
+from django.forms import TextInput
+from basic_app.forms import EmployeeCreateViewModel
 # Create your views here.
 
 # Original Function View:
@@ -94,10 +95,12 @@ class DepartmentDetailView(DetailView):
     model = models.Department
     template_name = 'basic_app/department_detail.html'
 class EmployeeCreateView(CreateView):
+    form_class= EmployeeCreateViewModel
 
-    fields = ("name","position","education","email","age","telephone","depname","profile_picture")
+    
     model = models.Employee
     template_name = 'basic_app/employee_form.html'
+
 
 
 class EmployeeUpdateView(UpdateView):
