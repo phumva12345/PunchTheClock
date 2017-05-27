@@ -70,7 +70,7 @@ class DepartmentListView(ListView):
         model = models.Employee
         context  = super().get_context_data(**kwargs)
 
-        context['injectme'] = model.objects.values('name', 'depname').annotate(Sum('salary'))
+        context['injectme'] = model.objects.values('depname').annotate(Sum('salary')).order_by('depname')
 
         return context
 class EmployeeSearchListView(ListView):
