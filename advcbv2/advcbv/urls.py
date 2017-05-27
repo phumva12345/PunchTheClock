@@ -22,7 +22,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls,name='admin'),
-    url(r'^$',vvv.IndexView.as_view()),
+    url(r'^$',vvv.IndexView.as_view(),name='index'),
     url(r'^basic_app/',include('basic_app.urls',namespace='basic_app')),
 
     # url(r'^$',views.CBView.as_view()),

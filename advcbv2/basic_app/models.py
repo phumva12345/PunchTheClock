@@ -26,6 +26,7 @@ class Employee(models.Model):
     position = models.CharField(max_length=256)
     age = models.CharField(max_length=256,null=True)
     education = models.CharField(max_length=256,choices = positionarr)
+    salary = models.IntegerField(default = 0)
     email = models.EmailField(max_length=70,blank=True)
     telephone = models.CharField(max_length=256)
     depname = models.ForeignKey(Department,null=True,related_name='depatments')

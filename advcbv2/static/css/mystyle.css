@@ -244,14 +244,7 @@ color: #e24040;
       padding-right: 13px;
     }
 
-    nav.sidebar .navbar-nav > li:first-child{
-      border-top: 1px #e5e5e5 solid;
-    }
-
-    nav.sidebar .navbar-nav > li{
-      border-bottom: 1px #e5e5e5 solid;
-    }
-
+  
     nav.sidebar .navbar-nav .open .dropdown-menu {
       position: static;
       float: none;

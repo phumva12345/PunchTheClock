@@ -4,6 +4,16 @@
 
 
     <h3>Department:</h3>
+    {{injectme}}
+      {% for x in injectme %}
+        {% if x.depname == pk %}
+            <p>{{x.salary__sum}} </p>
+        {% else %}
+            {{x.depname}}
+            No athletes.
+        {% endif %}
+
+      {% endfor %}
 
       {% for student in department_details.depatments.all %}
         <p>{{student.name}} </p>

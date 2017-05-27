@@ -26,7 +26,8 @@
     </div>
     <div class="row">
 
-
+      <h1>{{injectme}}</h1>
+      <div id="piechart" style="width: 900px; height: 500px;"></div>
       <table>
         <!-- <thead>
           <th><div class=""></div></th>
@@ -36,15 +37,66 @@
           <th><div class="position">
           Education</th></div>
         </thead> -->
-          {% load static %}
-          {% for school in department_list %}
+
+
+        {% load static %}
+        {% for school in department_list %}
+        <div class="row borderbot">
+          <div class="col-md-1 minusmar">
+
+          </div>
+          <div class="col-md-4">
+            <div class="row pull-down">
+              <div class="col-md-3">
+
+              </div>
+              <div class="col-md-9 padleftlst pull-down">
+                <div class="row">
+                  <div class="col-md-4">
+                    <a href="{% url 'basic_app:ddetail' pk=school.id%}">{{school.dep}} </a>
+                  </div>
+                  <div class="col-md-4">
+                    <p>{{school.depatments.all|length}}</p>
+                  </div>
+
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    {{school.depatments.all|length}}
+
+                  </div>
+
+                </div>
+              </div>
+
+
+
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+          <!-- {% load static %}
+          {% for school in x %}
+
         <tr>
 
           <td><a href="{% url 'basic_app:ddetail' pk=school.id%}">{{school.dep}} </a></td>
           <td>{{school.namedep}}</td>
+          <td>{{school.depatments.all|length}}</td>
+          <td>{{school.injectme}}</td>
+          <td>{{school.salary__sum}}<br></td>
+
 
         </tr>
         {% endfor %}
+        {% for school in injectme %}
+          {{school.depname}}
+          {{school.salary__sum}}<br>
+
+
+        {% endfor %} -->
+
+
       </table>
       {% if is_paginated %}
           <div class="pagination">

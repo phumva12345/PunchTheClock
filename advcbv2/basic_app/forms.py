@@ -6,7 +6,7 @@ from django.db import models
 class EmployeeCreateViewModel(forms.ModelForm):
     class Meta():
         model = Employee
-        fields = ("name","position","education","email","age","telephone","loginatten","depname","profile_picture")
+        fields = ("name","position","education","email","age","salary","telephone","loginatten","depname","profile_picture")
         widgets = {
             'name': forms.TextInput(attrs={'class': 'textinputclass'})
         }

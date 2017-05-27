@@ -11,6 +11,7 @@ from django.db.models import Q
 from django.core.paginator import Paginator
 from django.forms import TextInput
 from basic_app.forms import EmployeeCreateViewModel
+from django.db.models import Sum
 # Create your views here.
 
 # Original Function View:
@@ -21,14 +22,29 @@ from basic_app.forms import EmployeeCreateViewModel
 #
 
 # Pretty simple right?
+def index(request):
+    """
+    View function for home page of site.
+    """
+    # Generate counts of some of the main objects
+    model = models.Employee
+    num_books=model.objects.all().count()
+
+
+    # Render the HTML template index.html with the data in the context variable.
+    return render(
+        request,
+        'index.html',
+        context={'num_books':num_books,},
+    )
 class IndexView(TemplateView):
     # Just set this Class Object Attribute to the template page.
     # template_name = 'app_name/site.html'
     template_name = 'index.html'
-
     def get_context_data(self,**kwargs):
+        model = models.Employee
         context  = super().get_context_data(**kwargs)
-        context['injectme'] = "Basic Injection!"
+        context['injectme'] = model.objects.all().count()
         return context
 
 class EmployeeListView(ListView):
@@ -41,16 +57,23 @@ class EmployeeListView(ListView):
     # context_object_name = 'schools'
 
     model = models.Employee
-    paginate_by = 10
+    paginate_by = 8
+    # def get_total(self):
+    #     pass
 
 class DepartmentListView(ListView):
 
     model = models.Department
     paginate_by =10
     template_name = 'basic_app/department_list.html'
+    def get_context_data(self,**kwargs):
+        model = models.Employee
+        context  = super().get_context_data(**kwargs)
+
+        context['injectme'] = model.objects.values('name', 'depname').annotate(Sum('salary'))
+
+        return context
 class EmployeeSearchListView(ListView):
-
-
 
     context_object_name = 'searchde'
 
@@ -90,21 +113,29 @@ class EmployeeDetailView(DetailView):
     model = models.Employee
     template_name = 'basic_app/employee_detail.html'
 
+
 class DepartmentDetailView(DetailView):
     context_object_name = 'department_details'
     model = models.Department
     template_name = 'basic_app/department_detail.html'
+    def get_context_data(self,**kwargs):
+        model = models.Employee
+        context  = super().get_context_data(**kwargs)
+
+        context['injectme'] = model.objects.values('depname').annotate(Sum('salary'))
+
+        return context
 class EmployeeCreateView(CreateView):
     form_class= EmployeeCreateViewModel
 
-    
+
     model = models.Employee
     template_name = 'basic_app/employee_form.html'
 
 
 
 class EmployeeUpdateView(UpdateView):
-    fields = ("name","position")
+    fields = ("name","position","salary")
     model = models.Employee
     template_name = 'basic_app/employee_form.html'
 
