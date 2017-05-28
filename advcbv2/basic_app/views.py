@@ -234,7 +234,7 @@ class AttendanceList(APIView):
 
     def post(self,request):
         now = timezone.now()
-        serializer = AttendanceSerializer(data=request.data)
+        serializer = AttendanceSerializer(data=request.data,files=request.FILES)
         serializer.is_valid(raise_exception=True)
         if serializer.is_valid():
             serializer.save(time=now)
