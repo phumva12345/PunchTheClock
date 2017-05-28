@@ -18,7 +18,6 @@ class Department(models.Model):
     def get_absolute_url(self):
         return reverse("basic_app:list")
 
-
 class Employee(models.Model):
 
     positionarr = (('ceo','CEO'),('manager','Manager'),('worker','Worker'))

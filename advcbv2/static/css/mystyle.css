@@ -140,6 +140,7 @@ body#page2{
 
 
   font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+  border-radius: 15px;
 
 }
 
@@ -244,7 +245,7 @@ color: #e24040;
       padding-right: 13px;
     }
 
-  
+
     nav.sidebar .navbar-nav .open .dropdown-menu {
       position: static;
       float: none;
@@ -347,4 +348,20 @@ color: #e24040;
 }
 .minusmar{
   margin-right: -65px;
+}
+
+
+.salaryfont {
+  font-size: 18px;
+  color: #D42A16;
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+}
+.salaryfont2 {
+  font-size: 10px;
+  color: #D42A16;
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+}
+
+.bathandsalary{
+  margin-top: -10px;
 }

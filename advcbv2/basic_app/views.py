@@ -62,16 +62,45 @@ class EmployeeListView(ListView):
     #     pass
 
 class DepartmentListView(ListView):
-
     model = models.Department
     paginate_by =10
     template_name = 'basic_app/department_list.html'
     def get_context_data(self,**kwargs):
-        model = models.Employee
+        # 1. Get list of all departments
+        # 2. Query employees in each department
+        # 3. Use sum function to get a sum value of employees salary in EACH department
+        departmentModal = models.Department
+        employeeModel = models.Employee
+        departmentResults = departmentModal.objects.all()
+        return_results = []
+        for department in departmentResults :
+            salary = 0
+            num_emp = 0
+            em = {}
+            employees = employeeModel.objects.filter(depname=department.id)
+            for employee in employees :
+                num_emp +=1
+                salary += employee.salary
+            em['salary'] = salary
+            em['name'] = department.dep
+            em['id_dep']= department.id
+            em['num_emp']= num_emp
+            return_results.append(em)
+        print(return_results)
+        employeeResults = employeeModel.objects.filter(depname=departmentResults);
+        print('getting department resultt')
+        print(departmentResults);
+        print('getting department employees resultt')
+        print(employeeResults);
         context  = super().get_context_data(**kwargs)
+        context['department_salary'] = return_results
+        print(return_results)
 
+        model = models.Employee
+        results = model.objects.all()
         context['injectme'] = model.objects.values('depname').annotate(Sum('salary')).order_by('depname')
-
+        print('getting results')
+        print(results)
         return context
 class EmployeeSearchListView(ListView):
 
@@ -119,11 +148,46 @@ class DepartmentDetailView(DetailView):
     model = models.Department
     template_name = 'basic_app/department_detail.html'
     def get_context_data(self,**kwargs):
-        model = models.Employee
+        # model = models.Employee
+        # context  = super().get_context_data(**kwargs)
+        #
+        # context['injectme'] = model.objects.values('depname').annotate(Sum('salary'))
+        # print(self.kwargs['pk'])
+        # return context
+
+
+        departmentModal = models.Department
+        employeeModel = models.Employee
+        departmentResults = departmentModal.objects.filter(pk = self.kwargs['pk'])
+        return_results = []
+        for department in departmentResults :
+            salary = 0
+            num_emp = 0
+            em = {}
+            employees = employeeModel.objects.filter(depname=department.id)
+            for employee in employees :
+                num_emp +=1
+                salary += employee.salary
+            em['salary'] = salary
+            em['name'] = department.dep
+            em['id_dep']= department.id
+            em['num_emp']= num_emp
+            return_results.append(em)
+        print(return_results)
+        employeeResults = employeeModel.objects.filter(depname=departmentResults);
+        print('getting department resultt')
+        print(departmentResults);
+        print('getting department employees resultt')
+        print(employeeResults);
         context  = super().get_context_data(**kwargs)
+        context['department_salary'] = return_results
+        print(return_results)
 
-        context['injectme'] = model.objects.values('depname').annotate(Sum('salary'))
-
+        model = models.Employee
+        results = model.objects.all()
+        context['injectme'] = model.objects.values('depname').annotate(Sum('salary')).order_by('depname')
+        print('getting results')
+        print(results)
         return context
 class EmployeeCreateView(CreateView):
     form_class= EmployeeCreateViewModel

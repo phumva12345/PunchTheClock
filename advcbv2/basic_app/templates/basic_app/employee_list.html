@@ -8,23 +8,27 @@
   <!-- <div class="jumbotron bgjumbotron2"> -->
 
     <div class="row paddown10">
-      <div class="col-md-12 ">
+      <div class="col-md-10">
         <form method="GET" action="{% url 'basic_app:search_detail' %}" class="navbar-form ">
         <input type="text" id="" class="searchb" name="q" placeholder="Search">
 
         <input type="radio" name="posit" value="depart">Department
         <input type="radio" name="posit" value="na">Name
         <input type="radio" name="posit" value="idd">Id
-        <input type="radio" class="radio_item" value="" name="item" id="radio1">
+        <!-- <input type="radio" class="radio_item" value="" name="item" id="radio1">
         <label class="label_item tooltip" for="radio1"> <span class="glyphicon glyphicon-user "> <span class="tooltiptext">Name</span></span></label>
 
-        <!--RADIO 2-->
+
         <input type="radio" class="radio_item" value="" name="item" id="radio2">
-        <label class="label_item tooltip" for="radio2"> <span class="glyphicon glyphicon-home "><span class="tooltiptext">Department</span></span></label>
-        <input type="submit" class="btn" value="Search" >
+        <label class="label_item tooltip" for="radio2"> <span class="glyphicon glyphicon-home "><span class="tooltiptext">Department</span></span></label> -->
+        <!-- <input type="submit" class="btn" value="Search" > -->
 
 
         </form>
+
+      </div>
+      <div class="col-md-2 ">
+        <a class="btn btn-info pull-right" href="{% url 'basic_app:create' %}">New Employee</a>
       </div>
 
 
@@ -55,10 +59,24 @@
 
             </div>
           </div>
-
-
-
         </div>
+      </div>
+      <div class="col-md-4 pull-right">
+        <div class="col-md-9 padleftlst pull-down">
+          <div class="row " >
+            <div class="col-md-12">
+              <p class="salaryfont">{{school.salary}}</p>
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="col-md-12 bathandsalary ">
+              <p class="salaryfont2"> THB</p>
+            </div>
+
+          </div>
+        </div>
+
       </div>
     </div>
     {% endfor %}

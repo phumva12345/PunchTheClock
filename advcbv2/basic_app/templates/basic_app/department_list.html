@@ -1,6 +1,6 @@
 {% extends "basic_app/basic_app_base.html" %}
 {% block body_block %}
-  <div class="jumbotron">
+
 
     <div class="row">
       <div class="col-md-12 ">
@@ -24,12 +24,39 @@
 
 
     </div>
-
-      <div id="piechart" style="width: 400; height: 100px;"></div>
-      {{injectme}}
       <div class="row">
+        <div class="col-sm-2">
+        </div>
+        <div class="col-sm-10">
+          <div id="piechart" style="width: 700; height: 400px;"></div>
+        </div>
+      </div>
 
-        <div class="col-md-6">
+
+      <div class="row">
+        <div class="col-sm-12">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>ID#</th>
+                <th>Department</th>
+                <th># Employee</th>
+                <th>Total Salary</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for department in department_salary %}
+              <tr>
+                <td>{{department.id_dep}}</td>
+                <td><a href="{% url 'basic_app:ddetail' pk=department.id_dep%}">{{ department.name }}</a></td>
+                <td>{{department.num_emp}}</td>
+                <td>{{ department.salary }} THB</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <!-- <div class="col-md-6">
           {% for school in department_list %}
           <a href="{% url 'basic_app:ddetail' pk=school.id%}">{{school.dep}} </a>
             {{school.namedep}}
@@ -44,7 +71,7 @@
 
           {% endfor %}
         </div>
-      </div>
+      </div> -->
 
 
       {% if is_paginated %}
@@ -66,7 +93,6 @@
 
 
 
-  </div>
 
 
 

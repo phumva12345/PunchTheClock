@@ -1,25 +1,23 @@
 {% extends "basic_app/basic_app_base.html" %}
 {% block body_block %}
-  <div class="jumbotron">
 
 
-    <h3>Department:</h3>
-    {{injectme}}
-      {% for x in injectme %}
-        {% if x.depname == pk %}
-            <p>{{x.salary__sum}} </p>
-        {% else %}
-            {{x.depname}}
-            No athletes.
-        {% endif %}
+    {% for department in department_salary %}
+    <tr>
+      <td><h3>Department:</h3>{{department.id_dep}}</td>
+      <td><a href="{% url 'basic_app:ddetail' pk=department.id_dep%}">{{ department.name }}</a></td>
+      <td>{{department.num_emp}}</td>
+      <td>{{ department.salary }} THB</td>
+    </tr>
+    {% endfor %}
 
-      {% endfor %}
+
+
 
       {% for student in department_details.depatments.all %}
         <p>{{student.name}} </p>
       {% endfor %}
 
-  </div>
 
 
 {% endblock %}

@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <title>
-      CBVs
+      PTC
       {# Title Extensions go inside the block#}
       {% block title_block %}
 
@@ -23,18 +23,25 @@
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
+        // var fruits = []
+        // print(fruits)
+        // for (var i = 0; i < 4; i++) {
+        //   fruits.push({work,5})
+        // }
+        // print('AAA')
+        // print(fruits)
+        var fruits =[];
+        console.log('Before loop', fruits);
+        fruits.push(['Department', 'Total Salary']);
+        {% for dep in department_salary %}
+          fruits.push(['{{ dep.name }}', {{ dep.salary }}])
+        {% endfor %}
+        console.log('After loop', fruits);
 
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Work',     5],
-          ['Eat',      5],
-          ['Commute',  20],
-
-
-        ]);
+        var data = google.visualization.arrayToDataTable(fruits);
 
         var options = {
-          title: 'My Daily Activities'
+          title: 'Deparment Expenses'
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
@@ -126,7 +133,7 @@
 
   {# Plugins#}
 
-
+  <script type="text/javascript" src="{% static 'js/myjava.js' %}"></script>
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script
