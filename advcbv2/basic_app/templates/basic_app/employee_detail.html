@@ -20,6 +20,7 @@
 
       {% for student in employee_details.employees.all %}
         <p>{{student.time}} </p>
+        <img class= "profile_img" src="{% static student.attendance_pic %}" alt="Oh, didn't show!" height="50" width="80">
       {% endfor %}
 
   <div class="container">

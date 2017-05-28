@@ -214,7 +214,7 @@ class EmployeeDeleteView(DeleteView):
     success_url = reverse_lazy("basic_app:list")
 
 class AttendanceCreateView(CreateView):
-    fields = ("employee","time")
+    fields = ("employee","time","attendance_pic")
     model = models.Attendance
     template_name = 'basic_app/employee_form.html'
 
