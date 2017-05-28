@@ -6,7 +6,10 @@ from django.db import models
 class EmployeeCreateViewModel(forms.ModelForm):
     class Meta():
         model = Employee
-        fields = ("name","position","education","email","age","salary","telephone","loginatten","depname","profile_picture")
+        fields = ("name","education","position","email","age","salary","telephone","loginatten","depname","profile_picture")
         widgets = {
-            'name': forms.TextInput(attrs={'class': 'textinputclass'})
+            'name': forms.TextInput(attrs={'class': 'textinputclass','placeholder': 'Name' }),
+            'education': forms.TextInput(attrs={'class': 'textinputclass','placeholder': 'Email' }),
+            'age': forms.TextInput(attrs={'class': 'textinputclass','placeholder': 'Age' }),
+            'email': forms.TextInput(attrs={'class': 'textinputclass','placeholder': 'Email' }),
         }

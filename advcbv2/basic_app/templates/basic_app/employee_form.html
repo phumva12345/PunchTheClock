@@ -3,7 +3,13 @@
 {% block body_block %}
   <form enctype="multipart/form-data" method="POST">
     {% csrf_token %}
-    {{ form.as_p }}
+    {% for f in form %}  
+    <div class="row">
+      <div class="col-sm-12">
+        {{f}}
+      </div>
+    </div>
+    {% endfor %}
     <input type="submit" class='btn btn-primary' value="Submit">
 
   </form>

@@ -19,12 +19,16 @@ from basic_app import views as vvv
 from django.contrib.auth import views
 from django.conf import settings
 from django.conf.urls.static import static
-
+from rest_framework.urlpatterns import format_suffix_patterns
 urlpatterns = [
     url(r'^admin/', admin.site.urls,name='admin'),
     url(r'^$',vvv.IndexView.as_view(),name='index'),
     url(r'^basic_app/',include('basic_app.urls',namespace='basic_app')),
+    url(r'^attendancelst/', vvv.AttendanceList.as_view()),
 
     # url(r'^$',views.CBView.as_view()),
     # url(r'^$',views.index)
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+
+
+urlpatterns = format_suffix_patterns(urlpatterns)

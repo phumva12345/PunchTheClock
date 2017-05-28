@@ -6,5 +6,10 @@
   <a href="{% url 'basic_app:detail' pk=student.id %}">{{student.name}} </a>
 
   {% endfor %}
+  {% for deparment in searchde %}
+
+  <a href="{{department.id}}">{{deparment.dep}} </a>
+
+  {% endfor %}
 
 {% endblock %}

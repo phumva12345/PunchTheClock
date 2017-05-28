@@ -12,6 +12,12 @@ from django.core.paginator import Paginator
 from django.forms import TextInput
 from basic_app.forms import EmployeeCreateViewModel
 from django.db.models import Sum
+from django.shortcuts import get_object_or_404
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from .serializers import AttendanceSerializer
+from django.utils import timezone
 # Create your views here.
 
 # Original Function View:
@@ -217,6 +223,27 @@ class DepartmentCreateView(CreateView):
     model = models.Department
     template_name = 'basic_app/employee_form.html'
 
+
+
+class AttendanceList(APIView):
+    def get(self,request):
+        model = models.Attendance
+        attendances = model.objects.all()
+        serializer = AttendanceSerializer(attendances, many = True)
+        return Response(serializer.data)
+
+    def post(self,request):
+        now = timezone.now()
+        serializer = AttendanceSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        if serializer.is_valid():
+            serializer.save(time=now)
+            # print (serializer.validated_data)
+            # emp = serializer.validated_data.get("employee")
+            # obj = models.Attendance.objects.create(time=now, employee=emp)
+            return Response("Success", status=status.HTTP_201_CREATED)
+            # return Response(AttendanceSerializer(obj).data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 class CBView(View):
     def get(self,request):
         return HttpResponse('Class Based Views are Cool!')

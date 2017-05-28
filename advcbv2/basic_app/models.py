@@ -43,7 +43,7 @@ class Employee(models.Model):
 
 class Attendance(models.Model):
     time = models.DateTimeField(default=datetime.now, blank=True)
-    employee = models.ForeignKey(Employee,related_name='employees')
+    employee = models.ForeignKey(Employee, related_name='employees')
 
     def __str__(self):
         return self.employee.name
