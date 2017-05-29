@@ -46,6 +46,8 @@ class Attendance(models.Model):
     employee = models.ForeignKey(Employee, related_name='employees')
     attendance_pic = models.ImageField(upload_to='attendance_pics',null = True)
 
+    
+
     def __str__(self):
         return self.employee.name
     def get_absolute_url(self):

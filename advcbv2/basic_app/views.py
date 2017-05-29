@@ -234,7 +234,7 @@ class AttendanceList(APIView):
 
     def post(self,request):
         now = timezone.now()
-        serializer = AttendanceSerializer(data=request.data,files=request.FILES)
+        serializer = AttendanceSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         if serializer.is_valid():
             serializer.save(time=now)
@@ -244,6 +244,7 @@ class AttendanceList(APIView):
             return Response("Success", status=status.HTTP_201_CREATED)
             # return Response(AttendanceSerializer(obj).data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        
 class CBView(View):
     def get(self,request):
         return HttpResponse('Class Based Views are Cool!')

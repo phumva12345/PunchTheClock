@@ -9,7 +9,12 @@ class EmployeeCreateViewModel(forms.ModelForm):
         fields = ("name","education","position","email","age","salary","telephone","loginatten","depname","profile_picture")
         widgets = {
             'name': forms.TextInput(attrs={'class': 'textinputclass','placeholder': 'Name' }),
-            'education': forms.TextInput(attrs={'class': 'textinputclass','placeholder': 'Email' }),
-            'age': forms.TextInput(attrs={'class': 'textinputclass','placeholder': 'Age' }),
-            'email': forms.TextInput(attrs={'class': 'textinputclass','placeholder': 'Email' }),
+            'age': forms.NumberInput(attrs={'class': 'textinputclass','placeholder': 'Age' }),
+            'email': forms.EmailInput(attrs={'class': 'textinputclass','placeholder': 'Email' }),
+            'education': forms.TextInput(attrs={'class': 'textinputclass','placeholder': 'Position' }),
+            'salary': forms.NumberInput(attrs={'class': 'textinputclass','placeholder': 'Salary' }),
+            'position': forms.TextInput(attrs={'class': 'textinputclass','placeholder': 'Education' }),
+            'profile_picture': forms.FileInput(attrs={'class': 'fileinputclass' }),
+
+
         }
