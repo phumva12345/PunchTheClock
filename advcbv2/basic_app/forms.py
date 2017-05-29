@@ -14,6 +14,7 @@ class EmployeeCreateViewModel(forms.ModelForm):
             'education': forms.TextInput(attrs={'class': 'textinputclass','placeholder': 'Position' }),
             'salary': forms.NumberInput(attrs={'class': 'textinputclass','placeholder': 'Salary' }),
             'position': forms.TextInput(attrs={'class': 'textinputclass','placeholder': 'Education' }),
+            'depname': forms.MultipleHiddenInput(attrs={'class': 'textinputclass','placeholder': 'Education' }),
             'profile_picture': forms.FileInput(attrs={'class': 'fileinputclass' }),
 
 

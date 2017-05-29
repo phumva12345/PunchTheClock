@@ -244,7 +244,7 @@ class AttendanceList(APIView):
             return Response("Success", status=status.HTTP_201_CREATED)
             # return Response(AttendanceSerializer(obj).data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-        
+
 class CBView(View):
     def get(self,request):
         return HttpResponse('Class Based Views are Cool!')

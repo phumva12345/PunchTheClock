@@ -192,6 +192,11 @@ color: #e24040;
 
 .textinputclass{
   border-radius: 5px;
+  margin-bottom: 10px;
+  padding-right: 50px;
+  padding-top: 13px;
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+
 }
 
 .bgjumbotron {

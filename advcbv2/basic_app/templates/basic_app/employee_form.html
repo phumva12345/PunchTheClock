@@ -3,8 +3,8 @@
 {% block body_block %}
   <form enctype="multipart/form-data" method="POST">
     {% csrf_token %}
-    {% for f in form %}  
-    <div class="row">
+    {% for f in form %}
+    <div class="row text-center">
       <div class="col-sm-12">
         {{f}}
       </div>
