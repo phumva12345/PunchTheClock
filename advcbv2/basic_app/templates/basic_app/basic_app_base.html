@@ -14,8 +14,14 @@
     {# Bootstrap and CSS (Probably would want downloaded files in your real projects)#}
     {# https://bootswatch.com/#}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
-
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
     <link rel="stylesheet" href= "{% static 'css/mystyle.css' %}"/>
+    <link href="{% static 'css/zoom.css' %}" rel="stylesheet">
+    <script src="{% static 'js/zoom.js' %}"></script>
+    <script src="{% static 'js/transition.js' %}"></script>
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato" />
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
@@ -60,10 +66,9 @@
         <ul class="nav navbar-nav ">
           <li><a class="navbar-brand" href="{% url 'basic_app:list' %}">PTC</a></li>
           <li><a class="navbar-link" href="{% url 'basic_app:dlist' %}">Department</a></li>
-          <li><a class="navbar-link" href="{% url 'basic_app:create' %}">Employee</a></li>
-          <li><a class="navbar-link" href="{% url 'basic_app:createatt' %}">Attendance</a></li>
-          <li><a class="navbar-link" href="{% url 'basic_app:createdep' %}">Department</a></li>
-          <li><a class="navbar-link" href="{% url 'basic_app:signup' %}">Member</a></li>
+          <li><a class="navbar-link" href="{% url 'basic_app:list' %}">Employee</a></li>
+
+          <li><a class="navbar-link" href="{% url 'basic_app:signup' %}">SignUp</a></li>
             <form method="GET" action="{% url 'basic_app:search_detail' %}" class="navbar-form pull-right">
             <input type="text" id="searchBox" class="input-medium search-query" name="q" placeholder="Search">
             <input type="submit" class="btn btn-primary btn-sm" value="Search" >
@@ -108,4 +113,6 @@
   src="https://code.jquery.com/jquery-3.2.0.min.js"
   integrity="sha256-JAW99MJVpJBGcbzEuXk4Az05s/XyDdBomFqNlM3ic+I="
   crossorigin="anonymous"></script>
+  {% block script %}
+  {% endblock %}
 </html>

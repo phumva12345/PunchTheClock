@@ -41,8 +41,12 @@ input, textarea {
   font-weight: 300;
 }
 
+.box_employee_head{
+  margin-top: 40px;
+}
+
 .employeeList {
-  padding: 15px 0;
+  padding: 2px 0;
 }
 
 
@@ -152,14 +156,21 @@ body {
   font-family: Lato,'AvenirLT-Black', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
   font-size: 27px !important;
 }
+.img-circles{
+  border-radius:999em;
+  border: 5px solid #dedede;
+
+}
 
 .positiondetail{
   font-family: Lato,'AvenirLT-Black', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
   color: #5DC2BE;
+  font-size: 20px;
 }
 
 .borderbtw{
-  border-left: 1px solid black;
+  border-right: 1px solid #dedede;
+  margin-top: 13px;
 }
 .glyphicon-education{
   padding-right:4px;
@@ -167,7 +178,7 @@ body {
 .educationdetail{
   font-family: Lato,'AvenirLT-Black', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
   font-size: 18px !important;
-  margin-top: 20px;
+
 }
 .jumbotron p{
   margin-botom: 3px;
@@ -232,7 +243,10 @@ color: #e24040;
     visibility: visible;
 }
 
+
+
 .bgjumbotron {
+  /*#F4F8F9*/
   background-color: #fff;
   /*padding:30px;*/
   border:2px solid #eee;
@@ -245,113 +259,6 @@ color: #e24040;
 
 }
 
-  nav.sidebar, .main{
-    -webkit-transition: margin 200ms ease-out;
-      -moz-transition: margin 200ms ease-out;
-      -o-transition: margin 200ms ease-out;
-      transition: margin 200ms ease-out;
-  }
-
-  .main{
-    padding: 10px 10px 0 10px;
-  }
-
- @media (min-width: 765px) {
-
-    .main{
-      position: absolute;
-      width: calc(100% - 40px);
-      margin-left: 40px;
-      float: right;
-    }
-
-    nav.sidebar:hover + .main{
-      margin-left: 200px;
-    }
-
-    nav.sidebar.navbar.sidebar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
-      margin-left: 0px;
-    }
-
-    nav.sidebar .navbar-brand, nav.sidebar .navbar-header{
-      text-align: center;
-      width: 100%;
-      margin-left: 0px;
-    }
-
-    nav.sidebar a{
-      padding-right: 13px;
-    }
-
-
-    nav.sidebar .navbar-nav .open .dropdown-menu {
-      position: static;
-      float: none;
-      width: auto;
-      margin-top: 0;
-      background-color: transparent;
-      border: 0;
-      -webkit-box-shadow: none;
-      box-shadow: none;
-    }
-
-    nav.sidebar .navbar-collapse, nav.sidebar .container-fluid{
-      padding: 0 0px 0 0px;
-    }
-
-    .navbar-inverse .navbar-nav .open .dropdown-menu>li>a {
-      color: #777;
-    }
-
-    nav.sidebar{
-      width: 200px;
-      height: 100%;
-      margin-left: -160px;
-      float: left;
-      margin-bottom: 0px;
-    }
-
-    nav.sidebar li {
-      width: 100%;
-    }
-
-    nav.sidebar:hover{
-      margin-left: 0px;
-    }
-
-    .forAnimate{
-      opacity: 0;
-    }
-  }
-
-  @media (min-width: 1330px) {
-
-    .main{
-      width: calc(100% - 200px);
-      margin-left: 200px;
-    }
-
-    nav.sidebar{
-      margin-left: 0px;
-      float: left;
-    }
-
-    nav.sidebar .forAnimate{
-      opacity: 1;
-    }
-  }
-
-  nav.sidebar .navbar-nav .open .dropdown-menu>li>a:hover, nav.sidebar .navbar-nav .open .dropdown-menu>li>a:focus {
-    color: #CCC;
-    background-color: transparent;
-  }
-
-  nav:hover .forAnimate{
-    opacity: 1;
-  }
-  section{
-    padding-left: 15px;
-  }
 
 .col-sm-7{
   padding-left: 0px;
@@ -399,7 +306,82 @@ color: #e24040;
   color: #D42A16;
   font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
 }
+.salaryfont3 {
+  font-size: 18px;
+  color: #D42A16;
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+  margin-top: 10px;
+}
 
 .bathandsalary{
   margin-top: -10px;
+}
+
+
+.employee_topic{
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.bgcolorrow{
+  background-color: #F4F8F9;
+  margin-bottom: 20px;
+  height: 60px;
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+  border: 1px solid #eee;
+
+}
+
+.listpads{
+  padding-bottom: 15px;
+
+}
+
+.pulllstdown{
+  padding-top: 15px;
+}
+
+.searchboxpad{
+  margin-right: -90px;
+}
+
+.radpad{
+  margin-top: 14px;
+}
+
+.plainnot{
+  background-color: #fff !important;
+}
+
+.smallthb{
+  font-size: 10px;
+  margin-top: 18px;
+  margin-left: -10px;
+  color: #D42A16;
+}
+
+.butshift{
+  margin-left: -39px;
+}
+
+.butmar{
+  padding-top: 25px;
+}
+.profile_rest{
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+.addpadde{
+  padding-bottom: 25px !important;
+}
+.xxxx{
+  padding-bottom: 25px !important;
+}
+
+.department_re{
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+  font-size: 40px;
 }

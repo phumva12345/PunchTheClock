@@ -164,6 +164,9 @@ class EmployeeSearchListView(LoginRequiredMixin,ListView):
         elif (q != '' and p == 'depart'):
             print("test3")
             object_list = self.model2.objects.filter(dep__icontains = q)
+        elif (q != '' and p == 'iddd'):
+            print("test4")
+            object_list = self.model2.objects.filter(id__icontains = q)
         else:
             print("fuck")
             object_list = self.model.objects.all()
@@ -238,8 +241,14 @@ class EmployeeCreateView(LoginRequiredMixin,CreateView):
 
 
 class EmployeeUpdateView(LoginRequiredMixin,UpdateView):
-    fields = ("name","position","salary")
+    fields = ("name","position","salary","depname")
     model = models.Employee
+    template_name = 'basic_app/employee_form.html'
+
+
+class DepartmentUpdateView(LoginRequiredMixin,UpdateView):
+    fields = ('dep',)
+    model = models.Department
     template_name = 'basic_app/employee_form.html'
 
 class EmployeeDeleteView(LoginRequiredMixin,DeleteView):
@@ -257,7 +266,7 @@ class AttendanceCreateView(LoginRequiredMixin,CreateView):
     template_name = 'basic_app/employee_form.html'
 
 class DepartmentCreateView(LoginRequiredMixin,CreateView):
-    fields =("dep","namedep")
+    fields =("dep",)
     model = models.Department
     template_name = 'basic_app/employee_form.html'
 
@@ -276,23 +285,50 @@ class AttendanceList(APIView):
 
     def post(self,request,format=None):
 
+        # now = timezone.now()
+        # # print(request.data)
+        # serializer = AttendanceSerializer(data=request.data)
+        # print('test')
+        # print(serializer)
+        # # serializer.is_valid(raise_exception=True)
+        # print("before check is valid")
+        # # print(serializer.attendance_pic)
+        #
+        # if serializer.is_valid():
+        #     #serializer.save(time=now)
+        #     print('check is valid')
+        #
+        #     emp = serializer.validated_data.get("employee")
+        #     img = serializer.validated_data.get("attendance_pic")
+        #     obj = models.Attendance.objects.create(time=now, employee=emp,attendance_pic=img)
+        #     #if(emp.loginatten == )
+        #     return Response("Success", status=status.HTTP_201_CREATED)
+        #     # return Response(AttendanceSerializer(obj).data, status=status.HTTP_201_CREATED)
+        # return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         now = timezone.now()
-        # print(request.data)
+        ide = request.data["employee"]
+        pw = request.data["Password"]
         serializer = AttendanceSerializer(data=request.data)
-        print('test')
-        print(serializer)
-        # serializer.is_valid(raise_exception=True)
-        print("before check is valid")
-        # print(serializer.attendance_pic)
-
+        serializer.is_valid(raise_exception=True)
+        temp = models.Employee.objects.get(id = ide)
+        if(temp == None):
+            return Response("Invalid ID", status=status.HTTP_400_BAD_REQUEST)
         if serializer.is_valid():
-            serializer.save(time=now)
-            print('check is valid')
-            # emp = serializer.validated_data.get("employee")
-            # obj = models.Attendance.objects.create(time=now, employee=emp)
-            return Response("Success", status=status.HTTP_201_CREATED)
+            #serializer.save(time=now)
+            # print (serializer.validated_data)
+            emp = serializer.validated_data.get("employee")
+
+            pic = serializer.validated_data.get("attendance_pic")
+            print("\t",pw)
+            print("\t",temp.loginatten)
+            if(pw == temp.loginatten):
+                obj = models.Attendance.objects.create(time=now, employee=emp,attendance_pic=pic)
+                return Response("Success", status=status.HTTP_201_CREATED)
+
+            return Response("Invalid Password", status=status.HTTP_400_BAD_REQUEST)
             # return Response(AttendanceSerializer(obj).data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 class CBView(View):
     def get(self,request):

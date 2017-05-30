@@ -14,7 +14,7 @@ import dateutil.parser
 class Department(models.Model):
 
     dep = models.CharField(max_length=256)
-    namedep = models.CharField(max_length=256)
+
 
     def __str__(self):
         return self.dep
@@ -25,13 +25,13 @@ class Employee(models.Model):
 
     positionarr = (('ceo','CEO'),('manager','Manager'),('worker','Worker'))
     name = models.CharField(max_length=256)
-    position = models.CharField(max_length=256)
+    position = models.CharField(max_length=256,choices = positionarr,default="")
     age = models.CharField(max_length=256,null=True)
-    education = models.CharField(max_length=256,choices = positionarr)
-    salary = models.IntegerField(default = 0)
+    education = models.CharField(max_length=256, null = True)
+    salary = models.IntegerField(null = True)
     email = models.EmailField(max_length=70,blank=True)
     telephone = models.CharField(max_length=256)
-    depname = models.ForeignKey(Department,null=True,related_name='depatments',on_delete=models.SET_NULL,blank=True)
+    depname = models.ForeignKey(Department,null=True,default="",related_name='depatments',on_delete=models.SET_NULL,blank=True )
     profile_picture = models.ImageField(upload_to='profile_pics')
     loginatten = models.CharField(max_length=256, unique= True)
 

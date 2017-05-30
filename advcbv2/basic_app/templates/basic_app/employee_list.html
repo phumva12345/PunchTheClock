@@ -1,5 +1,8 @@
 {% extends "basic_app/basic_app_base.html" %}
 {% block body_block %}
+
+
+
   <div class="row box_header">
     <div class="col-md-12">
       <h2>Employee List</h2>
@@ -9,12 +12,26 @@
 
     <div class="row paddown10">
       <div class="col-md-10">
-        <form method="GET" action="{% url 'basic_app:search_detail' %}" class="navbar-form ">
-        <input type="text" id="" class="searchb" name="q" placeholder="Search">
+        <div class="row">
+          <div class="col-sm-4 searchboxpad">
+            <div class="input-group">
+              <form method="GET" action="{% url 'basic_app:search_detail' %}" class="navbar-form ">
+                <input type="text" class="form-control" placeholder="Search" name="q">
+                <div class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                </div>
+            </div>
+          </div>
+          <div class="col-sm-2 radpad">
+            <input type="radio" name="posit" value="na">Name
+            <input type="radio" name="posit" value="idd">Id
+          </div>
+        </div>
 
-        <input type="radio" name="posit" value="depart">Department
-        <input type="radio" name="posit" value="na">Name
-        <input type="radio" name="posit" value="idd">Id
+
+
+
+
         <!-- <input type="radio" class="radio_item" value="" name="item" id="radio1">
         <label class="label_item tooltip" for="radio1"> <span class="glyphicon glyphicon-user "> <span class="tooltiptext">Name</span></span></label>
 
@@ -23,7 +40,7 @@
         <label class="label_item tooltip" for="radio2"> <span class="glyphicon glyphicon-home "><span class="tooltiptext">Department</span></span></label> -->
         <!-- <input type="submit" class="btn" value="Search" > -->
 
-
+      </form>
         </form>
 
       </div>
@@ -33,16 +50,43 @@
 
 
     </div>
+    <div class="row listpads">
+      <div class="col-md-4">
+        <div class="employee_topic">
+          BASIC INFO
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="employee_topic">
+          DEPARTMENT
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="employee_topic">
+          POSITION
+        </div>
+      </div>
+      <div class="col-md-1">
+        <div class="employee_topic">
+          PHONE
+        </div>
+      </div>
+      <div class="col-md-2 pull-right">
+        <div class="employee_topic">
+          SALARY
+        </div>
+      </div>
+    </div>
     {% load static %}
     {% for school in employee_list %}
-    <div class="row">
-      <div class="col-sm-6">
+    <div class="row bgcolorrow">
+      <div class="col-sm-12">
         <div class="employeeList">
           <div class="row">
-            <div class="col-md-8">
-            <div class="row pull-down">
-              <div class="col-md-4">
-                  <img class= "profile_img" src="{% static school.profile_picture %}" alt="Oh, didn't show!" height="55" width="55">
+            <div class="col-md-4">
+              <div class="row pull-down">
+                <div class="col-md-3">
+                  <img class= "profile_img" src="{% static school.profile_picture %}" alt="Oh, didn't show!" height="50" width="50">
               </div>
               <div class="col-md-8 padleftlst pull-down">
                 <div class="row">
@@ -60,22 +104,32 @@
               </div>
             </div>
             </div>
-            <div class="col-md-4 pull-right">
-          <div class="col-md-9 padleftlst pull-down">
-            <div class="row " >
-              <div class="col-md-12">
-                {% load humanize %}
-                <p class="salaryfont">{{school.salary|intcomma}}</p>
-              </div>
 
+            <div class="col-md-2 pulllstdown">
+              {{school.depname}}
             </div>
-            <div class="row">
-              <div class="col-md-12 bathandsalary ">
-                <p class="salaryfont2"> THB</p>
-              </div>
+            <div class="col-md-2 pulllstdown">
+              {{school.position}}
+            </div>
+            <div class="col-md-1 pulllstdown">
+              {{school.telephone}}
+            </div>
+            <div class="col-md-2 pull-right">
+              <div class="col-md-9 padleftlst pull-down ">
+                <div class="row " >
+                  <div class="col-md-12">
+                    {% load humanize %}
+                    <p class="salaryfont">{{school.salary|intcomma}}</p>
+                  </div>
 
+                </div>
+                <div class="row">
+                  <div class="col-md-12 bathandsalary ">
+                    <p class="salaryfont2"> THB</p>
+                  </div>
+
+              </div>
             </div>
-          </div>
 
         </div>
           </div>

@@ -1,6 +1,6 @@
 {% extends "basic_app/basic_app_base.html" %}
 {% block body_block %}
-
+<div class="plainnot">
 <div class="row box_header">
   <div class="col-md-12">
     <h2>Department Report</h2>
@@ -11,11 +11,10 @@
     <div class="row">
       <div class="col-md-12 ">
         <form method="GET" action="{% url 'basic_app:search_detail' %}" class="navbar-form ">
-        <input type="text" id="" class="searchb" name="q" placeholder="Search">
+        <input type="text" id="" class="searchb" name="q" value = "depart"placeholder="Search">
         &nbsp;&nbsp;&nbsp;
         <input type="radio" name="posit" value="depart">&nbsp;&nbsp;&nbsp;Department
-        <input type="radio" name="posit" value="na">&nbsp;&nbsp;&nbsp;Name
-        <input type="radio" name="posit" value="idd">&nbsp;&nbsp;&nbsp;ID
+        <input type="radio" name="posit" value="iddd">&nbsp;&nbsp;&nbsp;ID
         <input type="radio" class="radio_item" value="" name="item" id="radio1">
         <label class="label_item tooltip" for="radio1"> <span class="glyphicon glyphicon-user "> <span class="tooltiptext">Name</span></span></label>
 
@@ -27,6 +26,9 @@
 
         </form>
       </div>
+
+      <a class="btn btn-info pull-right" href="{% url 'basic_app:createdep' %}">New Department</a>
+    </div>
 
 
     </div>
@@ -98,8 +100,7 @@
     {% endif %}
 </div>
 
-
-
+</div>
 
 
 {% endblock %}

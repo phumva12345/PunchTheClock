@@ -10,6 +10,7 @@ urlpatterns = [
     url(r'^(?P<pk>\d+)/$',views.EmployeeDetailView.as_view(),name='detail'),
     url(r'^create/$',views.EmployeeCreateView.as_view(),name='create'),
     url(r'^update/(?P<pk>\d+)/$',views.EmployeeUpdateView.as_view(),name='update'),
+    url(r'^departupdate/(?P<pk>\d+)/$',views.DepartmentUpdateView.as_view(),name='depupdate'),
     url(r'^delete/(?P<pk>\d+)/$',views.EmployeeDeleteView.as_view(),name='delete'),
     url(r'^deletedep/(?P<pk>\d+)/$',views.DepartmentDeleteView.as_view(),name='deletedep'),
     url(r'^accounts/login/$', vviews.login, name='login'),
