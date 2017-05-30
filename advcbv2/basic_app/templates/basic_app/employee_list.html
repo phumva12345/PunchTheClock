@@ -1,7 +1,7 @@
 {% extends "basic_app/basic_app_base.html" %}
 {% block body_block %}
-  <div class="row boxshadowbot">
-    <div class="col-md-4">
+  <div class="row box_header">
+    <div class="col-md-12">
       <h2>Employee List</h2>
     </div>
   </div>
@@ -35,48 +35,51 @@
     </div>
     {% load static %}
     {% for school in employee_list %}
-    <div class="row borderbot">
-      <div class="col-md-1 minusmar">
-
-      </div>
-      <div class="col-md-4">
-        <div class="row pull-down">
-          <div class="col-md-3">
-
-              <img class= "profile_img" src="{% static school.profile_picture %}" alt="Oh, didn't show!" height="55" width="55">
-          </div>
-          <div class="col-md-9 padleftlst pull-down">
-            <div class="row">
-              <div class="col-md-12">
-                <a href="{{school.id}}">{{school.name}} </a>
-              </div>
-
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <p class="textsch">{{school.email}} </p>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 pull-right">
-        <div class="col-md-9 padleftlst pull-down">
-          <div class="row " >
-            <div class="col-md-12">
-              <p class="salaryfont">{{school.salary}}</p>
-            </div>
-
-          </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="employeeList">
           <div class="row">
-            <div class="col-md-12 bathandsalary ">
-              <p class="salaryfont2"> THB</p>
+            <div class="col-md-8">
+            <div class="row pull-down">
+              <div class="col-md-4">
+                  <img class= "profile_img" src="{% static school.profile_picture %}" alt="Oh, didn't show!" height="55" width="55">
+              </div>
+              <div class="col-md-8 padleftlst pull-down">
+                <div class="row">
+                  <div class="col-md-12">
+                    <a href="{{school.id}}">{{school.name}} </a>
+                  </div>
+
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <p class="textsch">{{school.email}} </p>
+                  </div>
+
+                </div>
+              </div>
             </div>
+            </div>
+            <div class="col-md-4 pull-right">
+          <div class="col-md-9 padleftlst pull-down">
+            <div class="row " >
+              <div class="col-md-12">
+                {% load humanize %}
+                <p class="salaryfont">{{school.salary|intcomma}}</p>
+              </div>
 
+            </div>
+            <div class="row">
+              <div class="col-md-12 bathandsalary ">
+                <p class="salaryfont2"> THB</p>
+              </div>
+
+            </div>
           </div>
-        </div>
 
+        </div>
+          </div>
+        </div><!-- end emplyeeList -->
       </div>
     </div>
     {% endfor %}

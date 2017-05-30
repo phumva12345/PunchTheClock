@@ -6,22 +6,18 @@
 
 
       <!-- <h2>Here is your injected content: {{ injectme }}</h2> -->
-      <div class="jumbotron bgall">
+      <div class="jumbotron bgall text-center">
         <div class="introhome">
           Punch-the-Clock
         </div>
         <div class="introhome2">
           Do whatever you want when you want to
-          <strong>Books:</strong> {{ injectme }}
-        </div>
 
-        <form class ="butcen"method="POST" action="{% url 'basic_app:login' %}">
-        {% csrf_token %}
-            {{form.as_p}}
-            {{form.username}}
-            <input type="submit" class='btn btn-primary butsize' value="Get Started" />
-            <input type="hidden" name="next" value="{{ next }}" />
-        </form>
+        </div>
+        <p><a class='btn btn-info butsize' href="{% url 'basic_app:list' %}">Get Started</a></p>
+
+
+
       </div>
 
   {% endblock %}

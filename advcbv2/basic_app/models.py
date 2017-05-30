@@ -3,10 +3,13 @@ from django.core.urlresolvers import reverse
 from PIL import Image
 
 from datetime import datetime
-
+from django.utils import timezone
+import dateutil.parser
 
 
 # Create your models here.
+
+
 
 class Department(models.Model):
 
@@ -28,7 +31,7 @@ class Employee(models.Model):
     salary = models.IntegerField(default = 0)
     email = models.EmailField(max_length=70,blank=True)
     telephone = models.CharField(max_length=256)
-    depname = models.ForeignKey(Department,null=True,related_name='depatments')
+    depname = models.ForeignKey(Department,null=True,related_name='depatments',on_delete=models.SET_NULL,blank=True)
     profile_picture = models.ImageField(upload_to='profile_pics')
     loginatten = models.CharField(max_length=256, unique= True)
 
@@ -42,11 +45,16 @@ class Employee(models.Model):
 
 
 class Attendance(models.Model):
-    time = models.DateTimeField(default=datetime.now, blank=True)
-    employee = models.ForeignKey(Employee, related_name='employees')
-    attendance_pic = models.ImageField(upload_to='attendance_pics',null = True)
 
-    
+    @property
+    def is_late(self):
+        return dateutil.parser.parse('08:00:00+07') > self.time
+
+    time = models.DateTimeField(default=datetime.now, blank=True)
+
+    attendance_pic = models.ImageField(upload_to='attendance_pics',null = True, blank=True)
+
+    employee = models.ForeignKey(Employee, related_name='employees')
 
     def __str__(self):
         return self.employee.name

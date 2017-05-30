@@ -21,6 +21,31 @@ th {
   font-size: 500px;
 }
 
+input, textarea {
+  border: 1px solid #dedede;
+  padding: 8px;
+  margin-bottom: 10px;
+  color: #222;
+  border-radius: 4px;
+  outline: none !important;
+}
+
+.box_header {
+  padding: 30px 15px;
+  border-bottom: 1px solid #dedede;
+}
+
+.box_header h2 {
+  margin: 0;
+  color: #aaa;
+  font-weight: 300;
+}
+
+.employeeList {
+  padding: 15px 0;
+}
+
+
 body {
   background-color: #1b1c1d;
 }
@@ -45,9 +70,25 @@ body {
   border-color: #1b1c1d;
   color: red;
 }
-.navbar{
-  margin-top:25px;
+.navbar.navbar-static-top {
+  background-color: #222;
   border:none;
+  padding-top: 10px;
+}
+.navbar a {
+  color: #dedede !important;
+}
+.navbar input {
+  background: #333;
+  border-color: #444;
+}
+.nav .btn {
+  padding: 8px;
+  color: #aaa !important;
+}
+
+.box_body {
+  padding: 15px;
 }
 .introhome{
   font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
@@ -74,6 +115,7 @@ body {
 }
 .butsize{
   font-size: 20px;
+  margin-top: 20px;
 }
 
 
@@ -102,7 +144,8 @@ body {
 }
 
 .profile_img{
-  border: 3px ridge #F8F8F8;
+  /*border: 3px ridge #F8F8F8;*/
+  border-radius: 999em;
 }
 
 .namedetail{
@@ -132,7 +175,7 @@ body {
 }
 
 body#page2{
-  background-color:#F8F8F8;
+  background-color:#fff;
 }
 
 
@@ -189,21 +232,11 @@ color: #e24040;
     visibility: visible;
 }
 
-
-.textinputclass{
-  border-radius: 5px;
-  margin-bottom: 10px;
-  padding-right: 50px;
-  padding-top: 13px;
-  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
-
-}
-
 .bgjumbotron {
   background-color: #fff;
-  border:2px solid #d6d6d6;
-  padding-top: 9px;
-  border-radius: .8rem;
+  /*padding:30px;*/
+  border:2px solid #eee;
+  border-radius: 4px;
 
 }
 .bgjumbotron2 {
@@ -358,7 +391,7 @@ color: #e24040;
 
 .salaryfont {
   font-size: 18px;
-  color: #D42A16;
+  color: #5cb85c;
   font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
 }
 .salaryfont2 {

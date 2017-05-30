@@ -58,15 +58,15 @@
 
 
         <ul class="nav navbar-nav ">
-          <li><a class="navbar-brand" href="{% url 'basic_app:list' %}">Employee</a></li>
-          <li><a class="navbar-link" href="{% url 'admin:index' %}">Admin</a></li>
-          <li><a class="navbar-link" href="{% url 'basic_app:create' %}">Create Employee</a></li>
-          <li><a class="navbar-link" href="{% url 'basic_app:createatt' %}">Create Atten</a></li>
-          <li><a class="navbar-link" href="{% url 'basic_app:createdep' %}">Create Dep</a></li>
+          <li><a class="navbar-brand" href="{% url 'basic_app:list' %}">PTC</a></li>
           <li><a class="navbar-link" href="{% url 'basic_app:dlist' %}">Department</a></li>
+          <li><a class="navbar-link" href="{% url 'basic_app:create' %}">Employee</a></li>
+          <li><a class="navbar-link" href="{% url 'basic_app:createatt' %}">Attendance</a></li>
+          <li><a class="navbar-link" href="{% url 'basic_app:createdep' %}">Department</a></li>
+          <li><a class="navbar-link" href="{% url 'basic_app:signup' %}">Member</a></li>
             <form method="GET" action="{% url 'basic_app:search_detail' %}" class="navbar-form pull-right">
             <input type="text" id="searchBox" class="input-medium search-query" name="q" placeholder="Search">
-            <input type="submit" class="btn" value="Search" >
+            <input type="submit" class="btn btn-primary btn-sm" value="Search" >
             </form>
           </ul>
           <ul class="nav navbar-nav navbar-right">
@@ -86,42 +86,10 @@
 
 
     </nav>
-    <div class="row">
-      <div class="col-sm-2">
-          <nav class="navbar navbar-default sidebar pull-right" role="navigation">
-          <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-          </div>
-          <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#">Home<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Usuarios <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a>
-                <ul class="dropdown-menu forAnimate" role="menu">
-                  <li><a href="#">Crear</a></li>
-                  <li><a href="#">Modificar</a></li>
-                  <li><a href="#">Reportar</a></li>
-                  <li class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
-                  <li class="divider"></li>
-                  <li><a href="#">Informes</a></li>
-                </ul>
-              </li>
-              <li ><a href="#">Libros<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-th-list"></span></a></li>
-              <li ><a href="#">Tags<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-tags"></span></a></li>
-              </ul>
-            </div>
-          </div>
-        </nav>
 
-</div>
-<div class="col-sm-8">
+
+
+<div class="col-sm-12">
     <div class="container bgjumbotron">
       {% block body_block %}
 

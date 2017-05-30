@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponse
 from django.views.generic import (View,TemplateView,
@@ -18,6 +18,14 @@ from rest_framework.response import Response
 from rest_framework import status
 from .serializers import AttendanceSerializer
 from django.utils import timezone
+from rest_framework.parsers import MultiPartParser, JSONParser
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import UserCreationForm
+from datetime import datetime
+
+import base64
+from django.core.files.base import ContentFile
+
 # Create your views here.
 
 # Original Function View:
@@ -43,6 +51,22 @@ def index(request):
         'index.html',
         context={'num_books':num_books,},
     )
+
+
+def signup(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+
+            return redirect('/')
+    else:
+        form = UserCreationForm()
+
+    return render(request, 'basic_app/signup.html', {'form': form})
 class IndexView(TemplateView):
     # Just set this Class Object Attribute to the template page.
     # template_name = 'app_name/site.html'
@@ -53,7 +77,7 @@ class IndexView(TemplateView):
         context['injectme'] = model.objects.all().count()
         return context
 
-class EmployeeListView(ListView):
+class EmployeeListView(LoginRequiredMixin,ListView):
     # If you don't pass in this attribute,
     # Django will auto create a context name
     # for you with object_list!
@@ -67,10 +91,12 @@ class EmployeeListView(ListView):
     # def get_total(self):
     #     pass
 
-class DepartmentListView(ListView):
+class DepartmentListView(LoginRequiredMixin,ListView):
+
     model = models.Department
     paginate_by =10
     template_name = 'basic_app/department_list.html'
+
     def get_context_data(self,**kwargs):
         # 1. Get list of all departments
         # 2. Query employees in each department
@@ -108,7 +134,7 @@ class DepartmentListView(ListView):
         print('getting results')
         print(results)
         return context
-class EmployeeSearchListView(ListView):
+class EmployeeSearchListView(LoginRequiredMixin,ListView):
 
     context_object_name = 'searchde'
 
@@ -143,13 +169,20 @@ class EmployeeSearchListView(ListView):
             object_list = self.model.objects.all()
         return object_list
 
-class EmployeeDetailView(DetailView):
+class EmployeeDetailView(LoginRequiredMixin,DetailView):
     context_object_name = 'employee_details'
     model = models.Employee
     template_name = 'basic_app/employee_detail.html'
+    def get_context_data(self,**kwargs):
+        context  = super().get_context_data(**kwargs)
+        attendancemodal = models.Attendance
+        attendanceResults = attendancemodal.objects.all()
+        context['late_time'] = datetime.strptime('8:00', '%H:%M')
+        # context=['late_time':,'checktime':]
+        return context
 
 
-class DepartmentDetailView(DetailView):
+class DepartmentDetailView(LoginRequiredMixin,DetailView):
     context_object_name = 'department_details'
     model = models.Department
     template_name = 'basic_app/department_detail.html'
@@ -195,7 +228,7 @@ class DepartmentDetailView(DetailView):
         print('getting results')
         print(results)
         return context
-class EmployeeCreateView(CreateView):
+class EmployeeCreateView(LoginRequiredMixin,CreateView):
     form_class= EmployeeCreateViewModel
 
 
@@ -204,21 +237,26 @@ class EmployeeCreateView(CreateView):
 
 
 
-class EmployeeUpdateView(UpdateView):
+class EmployeeUpdateView(LoginRequiredMixin,UpdateView):
     fields = ("name","position","salary")
     model = models.Employee
     template_name = 'basic_app/employee_form.html'
 
-class EmployeeDeleteView(DeleteView):
+class EmployeeDeleteView(LoginRequiredMixin,DeleteView):
     model = models.Employee
     success_url = reverse_lazy("basic_app:list")
 
-class AttendanceCreateView(CreateView):
+
+class DepartmentDeleteView(LoginRequiredMixin,DeleteView):
+    model = models.Department
+    success_url = reverse_lazy("basic_app:dlist")
+
+class AttendanceCreateView(LoginRequiredMixin,CreateView):
     fields = ("employee","time","attendance_pic")
     model = models.Attendance
     template_name = 'basic_app/employee_form.html'
 
-class DepartmentCreateView(CreateView):
+class DepartmentCreateView(LoginRequiredMixin,CreateView):
     fields =("dep","namedep")
     model = models.Department
     template_name = 'basic_app/employee_form.html'
@@ -226,19 +264,30 @@ class DepartmentCreateView(CreateView):
 
 
 class AttendanceList(APIView):
+
+    queryset = models.Attendance.objects.all()
+    # serializer_class = AttendanceSerializer
+    # parser_classes = (MultiPartParser, JSONParser)
     def get(self,request):
         model = models.Attendance
         attendances = model.objects.all()
         serializer = AttendanceSerializer(attendances, many = True)
         return Response(serializer.data)
 
-    def post(self,request):
+    def post(self,request,format=None):
+
         now = timezone.now()
+        # print(request.data)
         serializer = AttendanceSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
+        print('test')
+        print(serializer)
+        # serializer.is_valid(raise_exception=True)
+        print("before check is valid")
+        # print(serializer.attendance_pic)
+
         if serializer.is_valid():
             serializer.save(time=now)
-            # print (serializer.validated_data)
+            print('check is valid')
             # emp = serializer.validated_data.get("employee")
             # obj = models.Attendance.objects.create(time=now, employee=emp)
             return Response("Success", status=status.HTTP_201_CREATED)

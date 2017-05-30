@@ -1,9 +1,15 @@
 {% extends "basic_app/basic_app_base.html" %}
 {% block body_block %}
+<div class="row box_header">
+  <div class="col-md-12">
+    <h2>Employee Detail - Phum Vanaaaas</h2>
+  </div>
+</div>
+
     <div class="row">
-      <div class="col-md-5 textaligncen">
+      <div class="col-md-5 text-center">
         {% load static %}
-        <p> <img class= "img-circles" src="{% static employee_details.profile_picture %}" alt="Oh, didn't show!" height="275" width="275"></p>
+        <p> <img style="border-radius:999em" class= "img-circles" src="{% static employee_details.profile_picture %}" alt="Oh, didn't show!" height="275" width="275"></p>
         <p class="namedetail">{{employee_details.name}}</p>
         <p class="positiondetail">{{employee_details.position}}</p>
 
@@ -15,18 +21,42 @@
 
 
     </div>
+    <div class="container">
+      <p><a class='btn btn-warning' href="{% url 'basic_app:update' pk=employee_details.pk %}">Update</a></p>
+      <p><a class='btn btn-warning' href="{% url 'basic_app:delete' pk=employee_details.pk %}">Delete</a></p>
 
+    </div>
     <h3>Attendance:</h3>
 
-      {% for student in employee_details.employees.all %}
-        <p>{{student.time}} </p>
-        <img class= "profile_img" src="{% static student.attendance_pic %}" alt="Oh, didn't show!" height="50" width="80">
-      {% endfor %}
 
-  <div class="container">
-    <p><a class='btn btn-warning' href="{% url 'basic_app:update' pk=employee_details.pk %}">Update</a></p>
-    <p><a class='btn btn-warning' href="{% url 'basic_app:delete' pk=employee_details.pk %}">Delete</a></p>
 
-  </div>
+
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Time</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for student in employee_details.employees.all %}
+              <tr>
+                <td><img class= "profile_img" src="{% static student.attendance_pic %}" alt="Oh, didn't show!" height="50" width="80"></td>
+                <td>{{student.time}}</td>
+                {% if student.time|date:'Hi' >  late_time|date:'Hi' %}
+                <td>Late</td>
+                {% else %}
+                  <td>Not Late</td>
+                {% endif %}
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+
+
+
+
 
 {% endblock %}

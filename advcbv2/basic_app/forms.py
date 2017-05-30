@@ -11,10 +11,12 @@ class EmployeeCreateViewModel(forms.ModelForm):
             'name': forms.TextInput(attrs={'class': 'textinputclass','placeholder': 'Name' }),
             'age': forms.NumberInput(attrs={'class': 'textinputclass','placeholder': 'Age' }),
             'email': forms.EmailInput(attrs={'class': 'textinputclass','placeholder': 'Email' }),
-            'education': forms.TextInput(attrs={'class': 'textinputclass','placeholder': 'Position' }),
+            'telephone': forms.TextInput(attrs={'class': 'textinputclass','placeholder': 'Telephone' }),
+        
             'salary': forms.NumberInput(attrs={'class': 'textinputclass','placeholder': 'Salary' }),
             'position': forms.TextInput(attrs={'class': 'textinputclass','placeholder': 'Education' }),
-            'depname': forms.MultipleHiddenInput(attrs={'class': 'textinputclass','placeholder': 'Education' }),
+            'loginatten': forms.TextInput(attrs={'class': 'textinputclass','placeholder': 'Loginatten' }),
+            #'depname': forms.ModelChoiceField(queryset=Color.objects.all()attrs={'class': 'textinputclass','placeholder': 'Education' }),
             'profile_picture': forms.FileInput(attrs={'class': 'fileinputclass' }),
 
 

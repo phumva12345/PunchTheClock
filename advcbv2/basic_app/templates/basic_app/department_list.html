@@ -1,22 +1,28 @@
 {% extends "basic_app/basic_app_base.html" %}
 {% block body_block %}
 
+<div class="row box_header">
+  <div class="col-md-12">
+    <h2>Department Report</h2>
+  </div>
+</div>
 
+<div class="box_body">
     <div class="row">
       <div class="col-md-12 ">
         <form method="GET" action="{% url 'basic_app:search_detail' %}" class="navbar-form ">
         <input type="text" id="" class="searchb" name="q" placeholder="Search">
-
-        <input type="radio" name="posit" value="depart">Department
-        <input type="radio" name="posit" value="na">Name
-        <input type="radio" name="posit" value="idd">Id
+        &nbsp;&nbsp;&nbsp;
+        <input type="radio" name="posit" value="depart">&nbsp;&nbsp;&nbsp;Department
+        <input type="radio" name="posit" value="na">&nbsp;&nbsp;&nbsp;Name
+        <input type="radio" name="posit" value="idd">&nbsp;&nbsp;&nbsp;ID
         <input type="radio" class="radio_item" value="" name="item" id="radio1">
         <label class="label_item tooltip" for="radio1"> <span class="glyphicon glyphicon-user "> <span class="tooltiptext">Name</span></span></label>
 
         <!--RADIO 2-->
         <input type="radio" class="radio_item" value="" name="item" id="radio2">
         <label class="label_item tooltip" for="radio2"> <span class="glyphicon glyphicon-home "><span class="tooltiptext">Department</span></span></label>
-        <input type="submit" class="btn" value="Search" >
+        <input type="submit" class="btn btn-success" value="Search" >
 
 
         </form>
@@ -90,8 +96,7 @@
           </div>
         </div>
     {% endif %}
-
-
+</div>
 
 
 

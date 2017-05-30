@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'basic_app',
     'rest_framework',
+    'django.contrib.humanize'
 ]
 
 MIDDLEWARE = [
@@ -130,4 +131,5 @@ STATICFILES_DIRS = [
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
 
+LOGIN_URL = '/'
 LOGIN_REDIRECT_URL = '/'
