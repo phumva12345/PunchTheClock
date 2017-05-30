@@ -4,7 +4,7 @@ Developing by Second Year B.Eng. in Software Engineering, King Mongkut's Institu
 
 Base on : Python3 and [Django](https://www.djangoproject.com/)
 
-program requirement : [Face_recognition](https://github.com/ageitgey/face_recognition)
+program requirement : [Django](https://www.djangoproject.com/) ,[Pillow](https://pillow.readthedocs.io/en/4.1.x/) ,[Rest Framework](http://www.django-rest-framework.org/)
 # Features
 
 ## Employees Data Management
