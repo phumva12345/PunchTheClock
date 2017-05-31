@@ -327,7 +327,7 @@ class AttendanceList(APIView):
 
             return Response("Invalid Password", status=status.HTTP_400_BAD_REQUEST)
             # return Response(AttendanceSerializer(obj).data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response("Invalid DATA", status=status.HTTP_400_BAD_REQUEST)
 
 
 class CBView(View):
