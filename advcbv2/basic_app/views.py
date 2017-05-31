@@ -67,14 +67,13 @@ def signup(request):
         form = UserCreationForm()
 
     return render(request, 'basic_app/signup.html', {'form': form})
-class IndexView(TemplateView):
+
+class HelpSupport(TemplateView):
     # Just set this Class Object Attribute to the template page.
     # template_name = 'app_name/site.html'
-    template_name = 'index.html'
+    template_name = 'basic_app/help.html'
     def get_context_data(self,**kwargs):
-        model = models.Employee
         context  = super().get_context_data(**kwargs)
-        context['injectme'] = model.objects.all().count()
         return context
 
 class EmployeeListView(LoginRequiredMixin,ListView):
@@ -184,7 +183,15 @@ class EmployeeDetailView(LoginRequiredMixin,DetailView):
         # context=['late_time':,'checktime':]
         return context
 
-
+class IndexView(TemplateView):
+    # Just set this Class Object Attribute to the template page.
+    # template_name = 'app_name/site.html'
+    template_name = 'index.html'
+    def get_context_data(self,**kwargs):
+        model = models.Employee
+        context  = super().get_context_data(**kwargs)
+        context['injectme'] = model.objects.all().count()
+        return context
 class DepartmentDetailView(LoginRequiredMixin,DetailView):
     context_object_name = 'department_details'
     model = models.Department
@@ -327,7 +334,7 @@ class AttendanceList(APIView):
 
             return Response("Invalid Password", status=status.HTTP_400_BAD_REQUEST)
             # return Response(AttendanceSerializer(obj).data, status=status.HTTP_201_CREATED)
-        return Response("Invalid DATA", status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class CBView(View):

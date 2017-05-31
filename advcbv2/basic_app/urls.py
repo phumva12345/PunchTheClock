@@ -20,6 +20,8 @@ urlpatterns = [
     url(r'^createdeps/$',views.DepartmentCreateView.as_view(),name='createdep'),
     url(r'^deplist/$',views.DepartmentListView.as_view(),name='dlist'),
     url(r'^deplistdetail/(?P<pk>\d+)/$',views.DepartmentDetailView.as_view(),name='ddetail'),
+    url(r'^helpsupport/$',views.HelpSupport.as_view(),name='help'),
+
 
 
 

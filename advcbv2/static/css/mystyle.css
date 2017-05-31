@@ -401,3 +401,9 @@ color: #e24040;
   margin-top: 20px;
   padding-bottom: 20px;
 }
+.helptext{
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+  font-size: 15px;
+  color: black;
+
+}
