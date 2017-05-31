@@ -4,7 +4,7 @@ Developing by Second Year B.Eng. in Software Engineering, King Mongkut's Institu
 
 Base on : Python3 and [Django](https://www.djangoproject.com/)
 
-Web and Database requirement : [Django](https://www.djangoproject.com/),[Pillow](https://pillow.readthedocs.io/en/4.1.x/),[Rest Framework](http://www.django-rest-framework.org/),[PySide](http://docs.python-requests.org/en/master/)
+Web and Database requirement : [Django](https://www.djangoproject.com/),[Pillow](https://pillow.readthedocs.io/en/4.1.x/),[Rest Framework](http://www.django-rest-framework.org/),[Requests](http://docs.python-requests.org/en/master/)
 
 Program requirment : [OpenCV2](https://opencv-python-tutroals.readthedocs.io/en/latest/),[PySide](https://pypi.python.org/pypi/PySide/1.2.4),[Requests](http://docs.python-requests.org/en/master/)
 # Features
