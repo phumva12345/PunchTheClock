@@ -1,9 +1,9 @@
 {% extends "basic_app/basic_app_base.html" %}
 {% block body_block %}
 
-  {% for student in searchde %}
+  {% for employee in searchde %}
 
-  <a href="{% url 'basic_app:detail' pk=student.id %}">{{student.name}} </a>
+  <a href="{% url 'basic_app:detail' pk=employee.id %}">{{employee.name}} </a>
 
   {% endfor %}
   {% for deparment in searchde %}

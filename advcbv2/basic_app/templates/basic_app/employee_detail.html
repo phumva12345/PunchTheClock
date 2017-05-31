@@ -2,7 +2,7 @@
 {% block body_block %}
 <div class="row box_header">
   <div class="col-md-12">
-    <h2>Employee Detail - {{employee_details.name}}</h2>
+    <h2>Employee Detail - {{employee_details.name|title}}</h2>
   </div>
 </div>
 
@@ -14,7 +14,7 @@
       <div class="col-md-5  borderbtw">
         <div class="row">
           <div class="col-sm-8">
-            <p class="namedetail">{{employee_details.name}}</p>
+            <p class="namedetail">{{employee_details.name|title}}</p>
           </div>
           <div class="col-sm-4">
             {% load humanize %}
@@ -32,9 +32,9 @@
           </div>
         </div>
 
-        <p class="positiondetail">{{employee_details.depname}}</p>
+        <p class="positiondetail">{{employee_details.depname|title}}</p>
 
-        <p class="educationdetail"><span class="glyphicon glyphicon-education"></span>{{employee_details.education}}</p>
+        <p class="educationdetail"><span class="glyphicon glyphicon-education"></span>{{employee_details.education|title}}</p>
         <div class="row butmar">
           <div class="col-sm-3">
             <p><a class='btn btn-success btn-sm' href="{% url 'basic_app:update' pk=employee_details.pk %}">Update</a></p>
@@ -52,7 +52,7 @@
             Position:
           </div>
           <div class="col-md-6">
-            {{employee_details.depname}}
+            {{employee_details.depname|title}}
           </div>
         </div>
         <div class="row addpadde ">
@@ -100,14 +100,14 @@
               </tr>
             </thead>
             <tbody>
-              {% for student in employee_details.employees.all %}
+              {% for employee in employee_details.employees.all %}
               <tr>
-                <td><img class= "profile_img" src="{% static student.attendance_pic %}" data-action="zoom" alt="Oh, didn't show!" height="50" width="80"></td>
-                <td>{{student.time}}</td>
-                {% if student.time|date:'Hi' >  late_time|date:'Hi' %}
+                <td><img class= "profile_img" src="{% static employee.attendance_pic %}" data-action="zoom" alt="Oh, didn't show!" height="50" width="80"></td>
+                <td>{{employee.time}}</td>
+                {% if employee.time|date:'Hi' >  late_time|date:'Hi' %}
                 <td>Late</td>
                 {% else %}
-                  <td>Not Late</td>
+                <td>Not Late</td>
                 {% endif %}
               </tr>
               {% endfor %}

@@ -23,7 +23,7 @@ class Department(models.Model):
 
 class Employee(models.Model):
 
-    positionarr = (('ceo','CEO'),('manager','Manager'),('worker','Worker'))
+    positionarr = (('manager','Manager'),('employee','Employee'))
     name = models.CharField(max_length=256)
     position = models.CharField(max_length=256,choices = positionarr,default="")
     age = models.CharField(max_length=256,null=True)

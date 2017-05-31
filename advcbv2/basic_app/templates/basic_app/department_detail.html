@@ -13,18 +13,26 @@
 
       </div>
     </div>
-    <div class="row">
-      <div class="col-sm-6">
-        Expenses/day{{ department.salary}}
+    <div class="row padbotreport">
+      <div class="col-sm-6 reporttext">
+       {{ department.name}}'s Expenses/Day : {{ department.salary}}
       </div>
-      <div class="col-sm-6">
-        # of{{ department.num_emp}}
+      <div class="col-sm-6 reporttext">
+          Employee in Total: {{ department.num_emp}}
       </div>
     </div>
 
     {%endfor%}
-    <p><a class='btn btn-success btn-sm' href="{% url 'basic_app:depupdate' pk=department_details.pk %}">Update</a></p>
-    <p><a class='btn btn-success btn-sm' href="{% url 'basic_app:deletedep' pk=department_details.pk %}">Delete</a></p>
+    <div class="row">
+      <div class="col-sm-1">
+        <p><a class='btn btn-success btn-sm' href="{% url 'basic_app:depupdate' pk=department_details.pk %}">Update</a></p>
+      </div>
+      <div class="col-sm2">
+        <p><a class='btn btn-danger btn-sm' href="{% url 'basic_app:deletedep' pk=department_details.pk %}">Delete</a></p>
+      </div>
+    </div>
+
+
     <div class="row">
       <div class="col-sm-12">
         <table class="table table-striped">
@@ -37,11 +45,11 @@
           </thead>
           <tbody>
 
-            {% for student in department_details.depatments.all %}
+            {% for employee in department_details.depatments.all %}
             <tr>
-              <td>{{student.id}}</td>
-              <td><a href="{% url 'basic_app:detail' pk=student.id%}">{{student.name}}</td>
-              <td>{{student.salary}} </td>
+              <td>{{employee.id}}</td>
+              <td><a href="{% url 'basic_app:detail' pk=employee.id%}">{{employee.name}}</td>
+              <td>{{employee.salary}} </td>
             </tr>
 
             {% endfor %}

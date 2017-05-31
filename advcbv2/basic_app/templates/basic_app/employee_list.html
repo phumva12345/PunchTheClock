@@ -77,7 +77,7 @@
       </div>
     </div>
     {% load static %}
-    {% for school in employee_list %}
+    {% for employee in employee_list %}
     <div class="row bgcolorrow">
       <div class="col-sm-12">
         <div class="employeeList">
@@ -85,18 +85,18 @@
             <div class="col-md-4">
               <div class="row pull-down">
                 <div class="col-md-3">
-                  <img class= "profile_img" src="{% static school.profile_picture %}" alt="Oh, didn't show!" height="50" width="50">
+                  <img class= "profile_img" src="{% static employee.profile_picture %}" alt="Oh, didn't show!" height="50" width="50">
               </div>
               <div class="col-md-8 padleftlst pull-down">
                 <div class="row">
                   <div class="col-md-12">
-                    <a href="{{school.id}}">{{school.name}} </a>
+                    <a href="{{employee.id}}">{{employee.name|title}} </a>
                   </div>
 
                 </div>
                 <div class="row">
                   <div class="col-md-12">
-                    <p class="textsch">{{school.email}} </p>
+                    <p class="textsch">{{employee.email}} </p>
                   </div>
 
                 </div>
@@ -105,20 +105,20 @@
             </div>
 
             <div class="col-md-2 pulllstdown">
-              {{school.depname}}
+              {{employee.depname|title}}
             </div>
             <div class="col-md-2 pulllstdown">
-              {{school.position}}
+              {{employee.position|title}}
             </div>
             <div class="col-md-1 pulllstdown">
-              {{school.telephone}}
+              {{employee.telephone}}
             </div>
             <div class="col-md-2 pull-right">
               <div class="col-md-9 padleftlst pull-down ">
                 <div class="row " >
                   <div class="col-md-12">
                     {% load humanize %}
-                    <p class="salaryfont">{{school.salary|intcomma}}</p>
+                    <p class="salaryfont">{{employee.salary|intcomma}}</p>
                   </div>
 
                 </div>
