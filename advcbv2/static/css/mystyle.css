@@ -385,3 +385,6 @@ color: #e24040;
   font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
   font-size: 40px;
 }
+.searchtxtcolor:focus {
+  color:#fff;
+}

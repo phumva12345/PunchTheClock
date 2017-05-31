@@ -8,7 +8,7 @@
   {% endfor %}
   {% for deparment in searchde %}
 
-  <a href="{{department.id}}">{{deparment.dep}} </a>
+  <a href="{% url 'basic_app:ddetail' pk=deparment.id %}">{{deparment.dep}} </a>
 
   {% endfor %}
 
