@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'basic_app',
+    'rest_framework',
+    'django.contrib.humanize'
 ]
 
 MIDDLEWARE = [
@@ -108,7 +110,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Bangkok'
 
 USE_I18N = True
 
@@ -129,4 +131,5 @@ STATICFILES_DIRS = [
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
 
+LOGIN_URL = '/'
 LOGIN_REDIRECT_URL = '/'

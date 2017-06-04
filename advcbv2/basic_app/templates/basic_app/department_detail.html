@@ -1,15 +1,63 @@
 {% extends "basic_app/basic_app_base.html" %}
 {% block body_block %}
-  <div class="jumbotron">
+  {% for department in department_salary %}
+      <div class="row box_header">
+        <div class="col-md-12">
+          <h2>Department Report for {{ department.name}}</h2>
+        </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12 department_re">
 
 
-    <h3>Department:</h3>
+      </div>
+    </div>
+    <div class="row padbotreport">
+      <div class="col-sm-6 reporttext">
+       {{ department.name}}'s Expenses/Day : {{ department.salary}}
+      </div>
+      <div class="col-sm-6 reporttext">
+          Employee in Total: {{ department.num_emp}}
+      </div>
+    </div>
 
-      {% for student in department_details.depatments.all %}
-        <p>{{student.name}} </p>
-      {% endfor %}
+    {%endfor%}
+    <div class="row">
+      <div class="col-sm-1">
+        <p><a class='btn btn-success btn-sm' href="{% url 'basic_app:depupdate' pk=department_details.pk %}">Update</a></p>
+      </div>
+      <div class="col-sm2">
+        <p><a class='btn btn-danger btn-sm' href="{% url 'basic_app:deletedep' pk=department_details.pk %}">Delete</a></p>
+      </div>
+    </div>
 
-  </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>ID#</th>
+              <th>Employee name</th>
+              <th>Salary</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            {% for employee in department_details.depatments.all %}
+            <tr>
+              <td>{{employee.id}}</td>
+              <td><a href="{% url 'basic_app:detail' pk=employee.id%}">{{employee.name}}</td>
+              <td>{{employee.salary}} </td>
+            </tr>
+
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+
 
 
 {% endblock %}

@@ -1,12 +1,43 @@
 {% extends "basic_app/basic_app_base.html" %}
 
 {% block body_block %}
-  <form enctype="multipart/form-data" method="POST">
+<div class="row box_header">
+  <div class="col-md-12">
+    <h2>Create Form</h2>
+  </div>
+</div>
+
+<div class="box_body"></div>
+  <form enctype="multipart/form-data" method="POST" id="employee-form">
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" class='btn btn-primary' value="Submit">
+
+
+    <div class="row ">
+      <div class="col-sm-4">
+
+      </div>
+      <div class="col-sm-4 ">
+        {{form.as_p}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+
+      </div>
+      <div class="col-sm-4">
+        <input type="submit" class='btn btn-primary form-control' value="Submit">
+      </div>
+    </div>
+
 
   </form>
+</div>
 
-
+{% endblock %}
+{% block script %}
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#employee-form select').addClass('form-control').css('margin-bottom','10px');
+});
+</script>
 {% endblock %}

@@ -1,21 +1,69 @@
-{% extends "basic_app/basic_app_base.html" %}
+
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>
+      PTC
+      {# Title Extensions go inside the block#}
+      {% block title_block %}
+
+      {% endblock %}
+    </title>
+
+    {# Bootstrap and CSS (Probably would want downloaded files in your real projects)#}
+    {# https://bootswatch.com/#}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href= "{% static 'css/mystyle.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato" />
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+</head>
+  <body id="page2">
 
 
-{% block body_block %}
-  <div class="jumbotron">
+    <nav class="navbar navbar-default navbar-static-top  ">
+      <div class="container">
 
-    <h2>Please Login: </h2>
-    <h3>(Must be SuperUser, please check admin for issues.)</h3>
-    {% if form.errors %}
-        <p>Your username and password didn't match.Please try again!</p>
-    {% endif %}
 
-    <form method="POST" action="{% url 'basic_app:login' %}">
-    {% csrf_token %}
-        {{form.as_p}}
 
-        <input type="submit" class='btn btn-primary' value="Login" />
-        <input type="hidden" name="next" value="{{ next }}" />
-    </form>
+
+      </div>
+
+
+    </nav>
+
+<div class="row">
+
+
+<div class="col-sm-12 text-center">
+    <div class="container bgjumbotron">
+      <h2>Please Login: </h2>
+      {% if form.errors %}
+          <p>Your username and password didn't match.Please try again!</p>
+      {% endif %}
+
+      <form method="POST" action="{% url 'basic_app:login' %}">
+      {% csrf_token %}
+          {{form.as_p}}
+          <input type="submit" class='btn btn-primary' value="Login" />
+          <input type="hidden" name="next" value="{{ next }}" />
+      </form>
+    </div>
   </div>
-{% endblock %}
+</div>
+
+  </body>
+
+  {# Plugins#}
+
+  <script type="text/javascript" src="{% static 'js/myjava.js' %}"></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script
+  src="https://code.jquery.com/jquery-3.2.0.min.js"
+  integrity="sha256-JAW99MJVpJBGcbzEuXk4Az05s/XyDdBomFqNlM3ic+I="
+  crossorigin="anonymous"></script>
+</html>

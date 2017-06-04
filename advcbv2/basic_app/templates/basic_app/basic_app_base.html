@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <title>
-      CBVs
+      PTC
       {# Title Extensions go inside the block#}
       {% block title_block %}
 
@@ -14,9 +14,47 @@
     {# Bootstrap and CSS (Probably would want downloaded files in your real projects)#}
     {# https://bootswatch.com/#}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
-
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
     <link rel="stylesheet" href= "{% static 'css/mystyle.css' %}"/>
+    <link href="{% static 'css/zoom.css' %}" rel="stylesheet">
+    <script src="{% static 'js/zoom.js' %}"></script>
+    <script src="{% static 'js/transition.js' %}"></script>
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato" />
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        // var fruits = []
+        // print(fruits)
+        // for (var i = 0; i < 4; i++) {
+        //   fruits.push({work,5})
+        // }
+        // print('AAA')
+        // print(fruits)
+        var fruits =[];
+        console.log('Before loop', fruits);
+        fruits.push(['Department', 'Total Salary']);
+        {% for dep in department_salary %}
+          fruits.push(['{{ dep.name }}', {{ dep.salary }}])
+        {% endfor %}
+        console.log('After loop', fruits);
+
+        var data = google.visualization.arrayToDataTable(fruits);
+
+        var options = {
+          title: 'Deparment Expenses'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
 </head>
   <body id="page2">
 
@@ -26,15 +64,15 @@
 
 
         <ul class="nav navbar-nav ">
-          <li><a class="navbar-brand" href="{% url 'basic_app:list' %}">Employee</a></li>
-          <li><a class="navbar-link" href="{% url 'admin:index' %}">Admin</a></li>
-          <li><a class="navbar-link" href="{% url 'basic_app:create' %}">Create Employee</a></li>
-          <li><a class="navbar-link" href="{% url 'basic_app:createatt' %}">Create Atten</a></li>
-          <li><a class="navbar-link" href="{% url 'basic_app:createdep' %}">Create Dep</a></li>
+          <li><a class="navbar-brand" href="{% url 'basic_app:list' %}">PTC</a></li>
           <li><a class="navbar-link" href="{% url 'basic_app:dlist' %}">Department</a></li>
+          <li><a class="navbar-link" href="{% url 'basic_app:list' %}">Employee</a></li>
+
+          <li><a class="navbar-link" href="{% url 'basic_app:signup' %}">SignUp</a></li>
+          <li><a class="navbar-link" href="{% url 'basic_app:help' %}">Help</a></li>
             <form method="GET" action="{% url 'basic_app:search_detail' %}" class="navbar-form pull-right">
-            <input type="text" id="searchBox" class="input-medium search-query" name="q" placeholder="Search">
-            <input type="submit" class="btn" value="Search" >
+            <input type="text" id="searchBox" class="input-medium search-query searchtxtcolor" name="q" placeholder="Search">
+            <input type="submit" class="btn btn-primary btn-sm" value="Search" >
             </form>
           </ul>
           <ul class="nav navbar-nav navbar-right">
@@ -54,42 +92,10 @@
 
 
     </nav>
-    <div class="row">
-      <div class="col-sm-2">
-          <nav class="navbar navbar-default sidebar pull-right" role="navigation">
-          <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-          </div>
-          <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#">Home<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Usuarios <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a>
-                <ul class="dropdown-menu forAnimate" role="menu">
-                  <li><a href="#">Crear</a></li>
-                  <li><a href="#">Modificar</a></li>
-                  <li><a href="#">Reportar</a></li>
-                  <li class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
-                  <li class="divider"></li>
-                  <li><a href="#">Informes</a></li>
-                </ul>
-              </li>
-              <li ><a href="#">Libros<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-th-list"></span></a></li>
-              <li ><a href="#">Tags<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-tags"></span></a></li>
-              </ul>
-            </div>
-          </div>
-        </nav>
 
-</div>
-<div class="col-sm-8">
+
+
+<div class="col-sm-12">
     <div class="container bgjumbotron">
       {% block body_block %}
 
@@ -101,11 +107,13 @@
 
   {# Plugins#}
 
-
+  <script type="text/javascript" src="{% static 'js/myjava.js' %}"></script>
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script
   src="https://code.jquery.com/jquery-3.2.0.min.js"
   integrity="sha256-JAW99MJVpJBGcbzEuXk4Az05s/XyDdBomFqNlM3ic+I="
   crossorigin="anonymous"></script>
+  {% block script %}
+  {% endblock %}
 </html>

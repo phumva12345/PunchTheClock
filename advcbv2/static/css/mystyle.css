@@ -21,6 +21,35 @@ th {
   font-size: 500px;
 }
 
+input, textarea {
+  border: 1px solid #dedede;
+  padding: 8px;
+  margin-bottom: 10px;
+  color: #222;
+  border-radius: 4px;
+  outline: none !important;
+}
+
+.box_header {
+  padding: 30px 15px;
+  border-bottom: 1px solid #dedede;
+}
+
+.box_header h2 {
+  margin: 0;
+  color: #aaa;
+  font-weight: 300;
+}
+
+.box_employee_head{
+  margin-top: 40px;
+}
+
+.employeeList {
+  padding: 2px 0;
+}
+
+
 body {
   background-color: #1b1c1d;
 }
@@ -45,9 +74,25 @@ body {
   border-color: #1b1c1d;
   color: red;
 }
-.navbar{
-  margin-top:25px;
+.navbar.navbar-static-top {
+  background-color: #222;
   border:none;
+  padding-top: 10px;
+}
+.navbar a {
+  color: #dedede !important;
+}
+.navbar input {
+  background: #333;
+  border-color: #444;
+}
+.nav .btn {
+  padding: 8px;
+  color: #aaa !important;
+}
+
+.box_body {
+  padding: 15px;
 }
 .introhome{
   font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
@@ -74,6 +119,7 @@ body {
 }
 .butsize{
   font-size: 20px;
+  margin-top: 20px;
 }
 
 
@@ -102,21 +148,29 @@ body {
 }
 
 .profile_img{
-  border: 3px ridge #F8F8F8;
+  /*border: 3px ridge #F8F8F8;*/
+  border-radius: 999em;
 }
 
 .namedetail{
   font-family: Lato,'AvenirLT-Black', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
   font-size: 27px !important;
 }
+.img-circles{
+  border-radius:999em;
+  border: 5px solid #dedede;
+
+}
 
 .positiondetail{
   font-family: Lato,'AvenirLT-Black', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
   color: #5DC2BE;
+  font-size: 20px;
 }
 
 .borderbtw{
-  border-left: 1px solid black;
+  border-right: 1px solid #dedede;
+  margin-top: 13px;
 }
 .glyphicon-education{
   padding-right:4px;
@@ -124,7 +178,7 @@ body {
 .educationdetail{
   font-family: Lato,'AvenirLT-Black', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
   font-size: 18px !important;
-  margin-top: 20px;
+
 }
 .jumbotron p{
   margin-botom: 3px;
@@ -132,7 +186,7 @@ body {
 }
 
 body#page2{
-  background-color:#F8F8F8;
+  background-color:#fff;
 }
 
 
@@ -140,6 +194,7 @@ body#page2{
 
 
   font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+  border-radius: 15px;
 
 }
 
@@ -189,15 +244,13 @@ color: #e24040;
 }
 
 
-.textinputclass{
-  background-color: black;
-}
 
 .bgjumbotron {
+  /*#F4F8F9*/
   background-color: #fff;
-  border:2px solid #d6d6d6;
-  padding-top: 9px;
-  border-radius: .8rem;
+  /*padding:30px;*/
+  border:2px solid #eee;
+  border-radius: 4px;
 
 }
 .bgjumbotron2 {
@@ -206,120 +259,6 @@ color: #e24040;
 
 }
 
-  nav.sidebar, .main{
-    -webkit-transition: margin 200ms ease-out;
-      -moz-transition: margin 200ms ease-out;
-      -o-transition: margin 200ms ease-out;
-      transition: margin 200ms ease-out;
-  }
-
-  .main{
-    padding: 10px 10px 0 10px;
-  }
-
- @media (min-width: 765px) {
-
-    .main{
-      position: absolute;
-      width: calc(100% - 40px);
-      margin-left: 40px;
-      float: right;
-    }
-
-    nav.sidebar:hover + .main{
-      margin-left: 200px;
-    }
-
-    nav.sidebar.navbar.sidebar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
-      margin-left: 0px;
-    }
-
-    nav.sidebar .navbar-brand, nav.sidebar .navbar-header{
-      text-align: center;
-      width: 100%;
-      margin-left: 0px;
-    }
-
-    nav.sidebar a{
-      padding-right: 13px;
-    }
-
-    nav.sidebar .navbar-nav > li:first-child{
-      border-top: 1px #e5e5e5 solid;
-    }
-
-    nav.sidebar .navbar-nav > li{
-      border-bottom: 1px #e5e5e5 solid;
-    }
-
-    nav.sidebar .navbar-nav .open .dropdown-menu {
-      position: static;
-      float: none;
-      width: auto;
-      margin-top: 0;
-      background-color: transparent;
-      border: 0;
-      -webkit-box-shadow: none;
-      box-shadow: none;
-    }
-
-    nav.sidebar .navbar-collapse, nav.sidebar .container-fluid{
-      padding: 0 0px 0 0px;
-    }
-
-    .navbar-inverse .navbar-nav .open .dropdown-menu>li>a {
-      color: #777;
-    }
-
-    nav.sidebar{
-      width: 200px;
-      height: 100%;
-      margin-left: -160px;
-      float: left;
-      margin-bottom: 0px;
-    }
-
-    nav.sidebar li {
-      width: 100%;
-    }
-
-    nav.sidebar:hover{
-      margin-left: 0px;
-    }
-
-    .forAnimate{
-      opacity: 0;
-    }
-  }
-
-  @media (min-width: 1330px) {
-
-    .main{
-      width: calc(100% - 200px);
-      margin-left: 200px;
-    }
-
-    nav.sidebar{
-      margin-left: 0px;
-      float: left;
-    }
-
-    nav.sidebar .forAnimate{
-      opacity: 1;
-    }
-  }
-
-  nav.sidebar .navbar-nav .open .dropdown-menu>li>a:hover, nav.sidebar .navbar-nav .open .dropdown-menu>li>a:focus {
-    color: #CCC;
-    background-color: transparent;
-  }
-
-  nav:hover .forAnimate{
-    opacity: 1;
-  }
-  section{
-    padding-left: 15px;
-  }
 
 .col-sm-7{
   padding-left: 0px;
@@ -354,4 +293,117 @@ color: #e24040;
 }
 .minusmar{
   margin-right: -65px;
+}
+
+
+.salaryfont {
+  font-size: 18px;
+  color: #5cb85c;
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+}
+.salaryfont2 {
+  font-size: 10px;
+  color: #D42A16;
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+}
+.salaryfont3 {
+  font-size: 18px;
+  color: #D42A16;
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+  margin-top: 10px;
+}
+
+.bathandsalary{
+  margin-top: -10px;
+}
+
+
+.employee_topic{
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.bgcolorrow{
+  background-color: #F4F8F9;
+  margin-bottom: 20px;
+  height: 60px;
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+  border: 1px solid #eee;
+
+}
+
+.listpads{
+  padding-bottom: 15px;
+
+}
+
+.pulllstdown{
+  padding-top: 15px;
+}
+
+.searchboxpad{
+  margin-right: -90px;
+}
+
+.radpad{
+  margin-top: 14px;
+}
+
+.plainnot{
+  background-color: #fff !important;
+}
+
+.smallthb{
+  font-size: 10px;
+  margin-top: 18px;
+  margin-left: -10px;
+  color: #D42A16;
+}
+
+.butshift{
+  margin-left: -39px;
+}
+
+.butmar{
+  padding-top: 25px;
+}
+.profile_rest{
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+.addpadde{
+  padding-bottom: 25px !important;
+}
+.xxxx{
+  padding-bottom: 25px !important;
+}
+
+.department_re{
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+  font-size: 40px;
+}
+.searchtxtcolor:focus {
+  color:#fff;
+}
+
+
+.reporttext{
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+  font-size: 25px;
+}
+
+
+
+.padbotreport{
+  margin-top: 20px;
+  padding-bottom: 20px;
+}
+.helptext{
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+  font-size: 15px;
+  color: black;
+
 }

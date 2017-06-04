@@ -1,17 +1,86 @@
 {% extends "basic_app/basic_app_base.html" %}
 {% block body_block %}
-  <div class="jumbotron">
-    <div class="row">
-      <div class="col-md-5 textaligncen">
-        {% load static %}
-        <p> <img class= "img-circles" src="{% static employee_details.profile_picture %}" alt="Oh, didn't show!" height="275" width="275"></p>
-        <p class="namedetail">{{employee_details.name}}</p>
-        <p class="positiondetail">{{employee_details.position}}</p>
+<div class="row box_header">
+  <div class="col-md-12">
+    <h2>Employee Detail - {{employee_details.name|title}}</h2>
+  </div>
+</div>
 
-        <p class="educationdetail"><span class="glyphicon glyphicon-education"></span>{{employee_details.education}}</p>
+    <div class="row box_employee_head ">
+      <div class="col-md-3">
+        {% load static %}
+        <p> <img class= "img-circles" src="{% static employee_details.profile_picture %}" alt="Oh, didn't show!" height="235" width="235"></p>
       </div>
-      <div class="col-md-7 borderbtw">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      <div class="col-md-5  borderbtw">
+        <div class="row">
+          <div class="col-sm-8">
+            <p class="namedetail">{{employee_details.name|title}}</p>
+          </div>
+          <div class="col-sm-4">
+            {% load humanize %}
+            <div class="row">
+              <div class="col-sm-6">
+                <p class="salaryfont3">{{employee_details.salary|intcomma}}</p>
+              </div>
+              <div class="col-sm-5">
+                <p class="smallthb">THB/HR</p>
+              </div>
+
+            </div>
+
+
+          </div>
+        </div>
+
+        <p class="positiondetail">{{employee_details.depname|title}}</p>
+
+        <p class="educationdetail"><span class="glyphicon glyphicon-education"></span>{{employee_details.education|title}}</p>
+        <div class="row butmar">
+          <div class="col-sm-3">
+            <p><a class='btn btn-success btn-sm' href="{% url 'basic_app:update' pk=employee_details.pk %}">Update</a></p>
+          </div>
+          <div class="col-sm-3">
+            <p><a class='btn btn-default btn-sm butshift' href="{% url 'basic_app:delete' pk=employee_details.pk %}">Terminate</a></p>
+          </div>
+        </div>
+
+
+      </div>
+      <div class="col-md-3 profile_rest">
+        <div class="row xxxx">
+          <div class="col-md-5">
+            Position:
+          </div>
+          <div class="col-md-6">
+            {{employee_details.depname|title}}
+          </div>
+        </div>
+        <div class="row addpadde ">
+          <div class="col-md-5">
+            Age:
+          </div>
+          <div class="col-md-6">
+            {{employee_details.age}}
+          </div>
+        </div>
+        <div class="row addpadde">
+          <div class="col-md-5">
+            Telephone:
+          </div>
+          <div class="col-md-6">
+            {{employee_details.telephone}}
+          </div>
+        </div>
+        <div class="row addpadde">
+          <div class="col-md-5">
+            Password:
+          </div>
+          <div class="col-md-6">
+            {{employee_details.loginatten}}
+          </div>
+        </div>
+
+
       </div>
 
 
@@ -19,15 +88,35 @@
 
     <h3>Attendance:</h3>
 
-      {% for student in employee_details.employees.all %}
-        <p>{{student.time}} </p>
-      {% endfor %}
 
-  </div>
-  <div class="container">
-    <p><a class='btn btn-warning' href="{% url 'basic_app:update' pk=employee_details.pk %}">Update</a></p>
-    <p><a class='btn btn-warning' href="{% url 'basic_app:delete' pk=employee_details.pk %}">Delete</a></p>
 
-  </div>
+
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Time</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for employee in employee_details.employees.all %}
+              <tr>
+                <td><img class= "profile_img" src="{% static employee.attendance_pic %}" data-action="zoom" alt="Oh, didn't show!" height="50" width="80"></td>
+                <td>{{employee.time}}</td>
+                {% if employee.time|date:'Hi' >  late_time|date:'Hi' %}
+                <td>Late</td>
+                {% else %}
+                <td>Not Late</td>
+                {% endif %}
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+
+
+
+
 
 {% endblock %}
